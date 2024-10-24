@@ -1,5 +1,29 @@
 #pragma once
-class Grupo
-{
+#include <sstream>
+#include <iostream>
+#include "Horario.h"
+using namespace std;
+
+class Grupo {
+private:
+    int numeroGrupo;
+    int capacidadAlumnos;
+    int cantidadAlumnos;
+    Horario horario;
+public:
+    Grupo();
+    virtual ~Grupo();
+
+    int getNumeroGrupo();
+    int getNapacidadAlumnos();
+    int getCantidadAlumnos();
+    Horario getHorario();
+
+    void setNumeroGrupo(int);
+    void setNapacidadAlumnos(int);
+    void setCantidadAlumnos(int);
+    void setHorario(Horario);
+
+    string toString() const;
 };
 
