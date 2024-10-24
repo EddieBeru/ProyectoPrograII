@@ -131,6 +131,7 @@
     <ClCompile Include="Estudiante.cpp" />
     <ClCompile Include="Grupo.cpp" />
     <ClCompile Include="Horario.cpp" />
+    <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Periodo.cpp" />
     <ClCompile Include="Profesor.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Estudiante.h" />
     <ClInclude Include="Grupo.h" />
     <ClInclude Include="Horario.h" />
+    <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Periodo.h" />
     <ClInclude Include="Profesor.h" />
   </ItemGroup>

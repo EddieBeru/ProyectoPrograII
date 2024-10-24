@@ -13,7 +13,8 @@ private:
     //entre otros
 public:
     Estudiante();
-    virtual ~Estudiante();
+    Estudiante(string = "", string = "", string = "", int = 0, string = "");
+    virtual ~Estudiante(); 
 
     string getNombre();
     string getId();
