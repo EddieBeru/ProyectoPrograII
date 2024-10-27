@@ -12,6 +12,7 @@ private:
     bool estado;
 public:
     Curso();
+    Curso(string, string, int, float, bool);
     virtual ~Curso();
 
     string getNombre();

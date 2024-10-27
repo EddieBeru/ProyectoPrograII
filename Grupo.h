@@ -9,20 +9,21 @@ private:
     int numeroGrupo;
     int capacidadAlumnos;
     int cantidadAlumnos;
-    Horario horario;
+    Horario* horario;
 public:
     Grupo();
+    Grupo(int, int, int, Horario*);
     virtual ~Grupo();
 
     int getNumeroGrupo();
-    int getNapacidadAlumnos();
+    int getCapacidadAlumnos();
     int getCantidadAlumnos();
-    Horario getHorario();
+    Horario* getHorario();
 
     void setNumeroGrupo(int);
-    void setNapacidadAlumnos(int);
+    void setCapacidadAlumnos(int);
     void setCantidadAlumnos(int);
-    void setHorario(Horario);
+    void setHorario(Horario*);
 
     string toString() const;
 };

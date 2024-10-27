@@ -10,11 +10,13 @@ private:
 	int diasSemana;
 public:
 	Horario();
+	Horario(int, int, int);
 	virtual ~Horario();
 
 	int getHoraInicio();
 	int getHoraFinal();
 	int getDiasSemana();
+
 	void setHoraInicio(int);
 	void setHoraFinal(int);
 	void setDiasSemana(int);

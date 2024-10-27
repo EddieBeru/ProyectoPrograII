@@ -4,6 +4,7 @@
 using namespace std;
 
 class Periodo {
-
+public:
+	string toString() const;
 };
 

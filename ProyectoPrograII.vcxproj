@@ -132,7 +132,17 @@
     <ClCompile Include="Grupo.cpp" />
     <ClCompile Include="Horario.cpp" />
     <ClCompile Include="Interfaz.cpp" />
+    <ClCompile Include="ListaCurso.cpp" />
+    <ClCompile Include="ListaEstudiante.cpp" />
+    <ClCompile Include="ListaGrupo.cpp" />
+    <ClCompile Include="ListaPeriodo.cpp" />
+    <ClCompile Include="ListaProfesor.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NodoCurso.cpp" />
+    <ClCompile Include="NodoEstudiante.cpp" />
+    <ClCompile Include="NodoGrupo.cpp" />
+    <ClCompile Include="NodoPeriodo.cpp" />
+    <ClCompile Include="NodoProfesor.cpp" />
     <ClCompile Include="Periodo.cpp" />
     <ClCompile Include="Profesor.cpp" />
   </ItemGroup>
@@ -142,6 +152,16 @@
     <ClInclude Include="Grupo.h" />
     <ClInclude Include="Horario.h" />
     <ClInclude Include="Interfaz.h" />
+    <ClInclude Include="ListaCurso.h" />
+    <ClInclude Include="ListaEstudiante.h" />
+    <ClInclude Include="ListaGrupo.h" />
+    <ClInclude Include="ListaPeriodo.h" />
+    <ClInclude Include="ListaProfesor.h" />
+    <ClInclude Include="NodoCurso.h" />
+    <ClInclude Include="NodoEstudiante.h" />
+    <ClInclude Include="NodoGrupo.h" />
+    <ClInclude Include="NodoPeriodo.h" />
+    <ClInclude Include="NodoProfesor.h" />
     <ClInclude Include="Periodo.h" />
     <ClInclude Include="Profesor.h" />
   </ItemGroup>

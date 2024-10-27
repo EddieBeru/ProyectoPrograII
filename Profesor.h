@@ -12,6 +12,7 @@ private:
     string gradoAcademico;
 public:
     Profesor();
+    Profesor(string, string, int, string, string);
     virtual ~Profesor();
 
     string getNombre();

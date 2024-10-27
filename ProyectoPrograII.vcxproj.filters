@@ -39,6 +39,36 @@
     <ClCompile Include="Interfaz.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="NodoCurso.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaCurso.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoEstudiante.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaEstudiante.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoPeriodo.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaPeriodo.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoProfesor.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaProfesor.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoGrupo.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaGrupo.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Periodo.h">
@@ -60,6 +90,36 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Interfaz.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoCurso.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaCurso.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoEstudiante.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaEstudiante.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoPeriodo.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaPeriodo.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoProfesor.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaProfesor.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoGrupo.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaGrupo.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
