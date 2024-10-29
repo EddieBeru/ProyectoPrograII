@@ -11,10 +11,10 @@ private:
     int capacidadAlumnos;
     int cantidadAlumnos;
     Horario* horario;
-    //Curso* curso;
+    Curso* curso;
 public:
     Grupo();
-    Grupo(int, int, int, Horario*/*, Curso**/);
+    Grupo(int, int, int, Horario*, Curso*);
     virtual ~Grupo();
 
     int getNumeroGrupo();
