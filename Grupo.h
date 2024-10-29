@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include "Horario.h"
+#include "Curso.h"
 using namespace std;
 
 class Grupo {
@@ -10,9 +11,10 @@ private:
     int capacidadAlumnos;
     int cantidadAlumnos;
     Horario* horario;
+    //Curso* curso;
 public:
     Grupo();
-    Grupo(int, int, int, Horario*);
+    Grupo(int, int, int, Horario*/*, Curso**/);
     virtual ~Grupo();
 
     int getNumeroGrupo();
