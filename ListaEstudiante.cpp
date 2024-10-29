@@ -8,7 +8,30 @@ ListaEstudiante::~ListaEstudiante() {
 		delete actual;
 	}
 }
-
+void ListaEstudiante::ingresarLista(const string& archivo) {
+	ofstream txt(archivo);
+	actual = this->primero;
+	while (actual != NULL) {
+		txt.write((char*)actual->getElemento(), sizeof(Estudiante));
+		actual = actual->getSiguiente();
+	}
+}
+void ListaEstudiante::sacarLista(const string& archivo) {
+	ifstream txt(archivo);
+	Estudiante* nuevoEstudiante = new Estudiante;
+	txt.read((char*)nuevoEstudiante, sizeof(Estudiante));
+	while (!txt.eof()) {
+		//CREARLE UN OBJETO Y AÑADIRLO A LA LISTA POSIBLEMENTE HAYA QUE VACIAR LA LISTA ANTES
+		cout << "Nombre: " << nuevoEstudiante->getNombre() << endl;
+		cout << "Id: " << nuevoEstudiante->getId() << endl;
+		cout << "esp: " << nuevoEstudiante->getEspecialidad() << endl;
+		cout << "email: " << nuevoEstudiante->getEmail() << endl;
+		cout << "nym: " << nuevoEstudiante->getNumero() << endl;
+		cout << "--------------------------" << endl;
+		txt.read((char*)nuevoEstudiante, sizeof(Estudiante));
+	}
+	txt.close();
+}
 bool ListaEstudiante::ingresarEstudiante(Estudiante* Estudiante) {
 	bool posible = !existe(Estudiante);
 	if (posible) {

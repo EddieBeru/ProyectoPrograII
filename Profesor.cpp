@@ -31,4 +31,9 @@ void Profesor::setGradoAcademico(string gradAcad) {
 string Profesor::toString() const {
 	stringstream s;
 	s << "Nombre: " << nombre << endl;
+	s<<"Id: "<< id<<endl;
+	s<<"Numero: "<< numero<<endl;
+	s<<"Email: "<< email<<endl;
+	s<<"Grado Academico: "<< gradoAcademico<<endl;
+	return s.str();
 }

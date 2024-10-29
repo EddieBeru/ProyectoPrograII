@@ -8,7 +8,6 @@ ListaGrupo::~ListaGrupo() {
 		delete actual;
 	}
 }
-
 bool ListaGrupo::ingresarGrupo(Grupo* Grupo) {
 	bool posible = !existe(Grupo);
 	if (posible) {
@@ -71,8 +70,9 @@ string ListaGrupo::toString() {
 	stringstream s;
 	actual = primero;
 	while (actual != NULL) {
-		s << actual->getElemento()->toString() << endl;
+		s << actual->getElemento()->toString();
 		actual = actual->getSiguiente();
+	s << endl;
 	}
 	return s.str();
 }

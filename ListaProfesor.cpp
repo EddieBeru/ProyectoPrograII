@@ -1,5 +1,4 @@
 #include "ListaProfesor.h"
-
 ListaProfesor::ListaProfesor() { primero = NULL; actual = NULL; }
 ListaProfesor::~ListaProfesor() {
 	while (primero != NULL) {
@@ -8,7 +7,51 @@ ListaProfesor::~ListaProfesor() {
 		delete actual;
 	}
 }
+void ListaProfesor::ingresarLista(const string& archivo) {
+	ofstream txt(archivo);
+	actual = this->primero;
+	while (actual != NULL) {
+		txt << actual->getElemento()->getNombre() << " "
+			<< actual->getElemento()->getId() << " "
+			<< actual->getElemento()->getNumero() << " "
+			<< actual->getElemento()->getEmail() << " "
+			<< actual->getElemento()->getGradoAcademico() << endl;
+		actual = actual->getSiguiente();
+	}
+	txt.close();
+}
+void ListaProfesor::sacarLista(const string& archivo) {
+	ifstream txt(archivo);
+	while (primero != NULL) {
+		actual = primero;
+		primero = primero->getSiguiente();
+		delete actual;
+	}
+	actual = primero;
+	while (!txt.eof()) {
+		string nombre, id, email, gradAcad;
+		int numero;
 
+		txt>>nombre;
+		txt >> id;
+		txt >> numero;
+		txt>>email;
+		txt>>gradAcad;
+
+		
+		Profesor* Prof = new Profesor(nombre, id, numero, email, gradAcad);
+		if (primero == nullptr) {
+			primero = new NodoProfesor(Prof, NULL);
+		}
+		else {
+			actual = primero;
+			while (actual->getSiguiente() != NULL) {
+				actual = actual->getSiguiente();
+			}
+			actual->setSiguiente(new NodoProfesor(Prof, NULL));
+		}
+	}
+}
 bool ListaProfesor::ingresarProfesor(Profesor* Profesor) {
 	bool posible = !existe(Profesor);
 	if (posible) {

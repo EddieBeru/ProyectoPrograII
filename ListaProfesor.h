@@ -1,6 +1,7 @@
 #pragma once
 #include <sstream>
 #include <iostream>
+#include <fstream>
 #include "NodoProfesor.h"
 using namespace std;
 class ListaProfesor {
@@ -12,6 +13,8 @@ public:
 	virtual ~ListaProfesor();
 
 	bool ingresarProfesor(Profesor*);
+	void ingresarLista(const string& archivo);
+	void sacarLista(const string& archivo);
 	bool eliminarProfesor(Profesor*);
 	bool modificarProfesor(Profesor*, Profesor*);
 	bool existe(Profesor*);

@@ -5,14 +5,13 @@ using namespace std;
 
 class Estudiante {
 private:
-    string nombre;
+    char nombre[50];
     string id;
     string especialidad;
     int numero;
     string email;
     //entre otros
 public:
-    Estudiante();
     Estudiante(string = "", string = "", string = "", int = 0, string = "");
     virtual ~Estudiante(); 
 

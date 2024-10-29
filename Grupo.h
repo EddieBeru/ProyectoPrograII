@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Horario.h"
 #include "Curso.h"
+#include "Profesor.h"
+#include "Periodo.h"
 using namespace std;
 
 class Grupo {
@@ -12,9 +14,11 @@ private:
     int cantidadAlumnos;
     Horario* horario;
     Curso* curso;
+    Profesor* profesor;
+    Periodo* periodo;
 public:
     Grupo();
-    Grupo(int, int, int, Horario*, Curso*);
+    Grupo(int, int, int, Horario*, Curso*,Periodo*);
     virtual ~Grupo();
 
     int getNumeroGrupo();
@@ -26,6 +30,9 @@ public:
     void setCapacidadAlumnos(int);
     void setCantidadAlumnos(int);
     void setHorario(Horario*);
+    void setCurso(Curso*);
+    void setProfesor(Profesor*);
+    void setPeriodo(Periodo*);
 
     string toString() const;
 };
