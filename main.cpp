@@ -38,7 +38,7 @@ int main() {
 	E1->ingresarEstudiante(e4);
 	cout << E1->toString() << endl << endl << endl;
 	cout << "AAAQUIIIIII\n\n";
-	E1->ingresarLista("ListaEst.txt");//se mete binario nose con cual nos quedamos
+	E1->ingresarLista("ListaEst.txt");//Entonces hay que cambiar este por el normal :)
 	E1->sacarLista("ListaEst.txt");
 
 
