@@ -5,9 +5,12 @@
 #include "ListaProfesor.h"
 #include "ListaPeriodo.h"
 #include "ListaCurso.h"
+#include "ListaMatricula.h"
 using namespace std;
 
 int main() {
+
+	//Crear Cosos
 	ListaProfesor* L1=new ListaProfesor;
 	ListaEstudiante* E1 = new ListaEstudiante;
 	ListaPeriodo* P1 = new ListaPeriodo;
@@ -71,7 +74,8 @@ int main() {
 	Grupo* g2 = new Grupo(15, 16, 17, h2, c2, pe2);
 	Grupo* g3 = new Grupo(18, 19, 20, h3, c3, pe3);
 	Grupo* g4 = new Grupo(21, 22, 23, h4, c4, pe4);
-	g2->setProfesor(p2);
+	g2->setProfesor(L1->getProfesorEspecifico(2));//se le asigna un profesor al grupo con su posicion en la lista
+	//empezando en 1
 
 	G1->ingresarGrupo(g1);
 	G1->ingresarGrupo(g2);  
@@ -81,7 +85,20 @@ int main() {
 
 
 
+	//Matricula 
+	cout << "MATRICULAAAA"<<endl;
+	ListaMatricula* M1=new ListaMatricula;
+	Matricula* mat = new Matricula(pe1, c1, g1, e1);
+	Matricula* mat1 = new Matricula(pe1, c1, g1, e1);
+	Matricula* mat2 = new Matricula(pe1, c1, g1, e1);
+	Matricula* mat3 = new Matricula(pe1, c1, g1, e1);
 
+	M1->ingresarMatricula(mat);
+	M1->ingresarMatricula(mat1);
+	M1->ingresarMatricula(mat2);
+	M1->ingresarMatricula(mat3);
+	cout<<M1->getDescuento(e1)<<"%" << endl;
+	cout<<M1->factura(e1);
 
 
 

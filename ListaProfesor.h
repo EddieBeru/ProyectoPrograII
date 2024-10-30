@@ -15,6 +15,7 @@ public:
 	bool ingresarProfesor(Profesor*);
 	void ingresarLista(const string& archivo);
 	void sacarLista(const string& archivo);
+	Profesor* getProfesorEspecifico(int);
 	bool eliminarProfesor(Profesor*);
 	bool modificarProfesor(Profesor*, Profesor*);
 	bool existe(Profesor*);

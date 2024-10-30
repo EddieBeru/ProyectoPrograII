@@ -69,6 +69,15 @@
     <ClCompile Include="ListaGrupo.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Matricula.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoMatricula.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaMatricula.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Periodo.h">
@@ -120,6 +129,15 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="ListaGrupo.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Matricula.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoMatricula.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaMatricula.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
