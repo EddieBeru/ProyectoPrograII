@@ -7,7 +7,7 @@ ListaProfesor::~ListaProfesor() {
 		delete actual;
 	}
 }
-void ListaProfesor::ingresarLista(const string& archivo) {
+void ListaProfesor::ingresarLista(string archivo) {
 	ofstream txt(archivo);
 	actual = this->primero;
 	while (actual != NULL) {
@@ -20,6 +20,40 @@ void ListaProfesor::ingresarLista(const string& archivo) {
 	}
 	txt.close();
 }
+void ListaProfesor::sacarLista(string archivo) {
+	ifstream txt(archivo);
+	while (primero != NULL) {
+		actual = primero;
+		primero = primero->getSiguiente();
+		delete actual;
+	}
+	actual = primero;
+	string nombre, id, email, gradAcad;
+	int numero;
+	txt>>nombre;
+	while (!txt.eof()) {
+
+		txt >> id;
+		txt >> numero;
+		txt>>email;
+		txt>>gradAcad;
+
+		
+		Profesor* Prof = new Profesor(nombre, id, numero, email, gradAcad);//Creo que se puede ver mejor cambiando el for por ingresarProfe pero nose
+		if (primero == NULL) {
+			primero = new NodoProfesor(Prof, NULL);
+		}
+		else {
+			actual = primero;
+			while (actual->getSiguiente() != NULL) {
+				actual = actual->getSiguiente();
+			}
+			actual->setSiguiente(new NodoProfesor(Prof, NULL));
+		}
+	txt>>nombre;
+
+	}
+}
 Profesor* ListaProfesor::getProfesorEspecifico(int pos) {
 		actual = primero;
 		if (pos != 1) {
@@ -30,38 +64,6 @@ Profesor* ListaProfesor::getProfesorEspecifico(int pos) {
 		}
 		else
 			return actual->getElemento();
-}
-void ListaProfesor::sacarLista(const string& archivo) {
-	ifstream txt(archivo);
-	while (primero != NULL) {
-		actual = primero;
-		primero = primero->getSiguiente();
-		delete actual;
-	}
-	actual = primero;
-	while (!txt.eof()) {
-		string nombre, id, email, gradAcad;
-		int numero;
-
-		txt>>nombre;
-		txt >> id;
-		txt >> numero;
-		txt>>email;
-		txt>>gradAcad;
-
-		
-		Profesor* Prof = new Profesor(nombre, id, numero, email, gradAcad);
-		if (primero == nullptr) {
-			primero = new NodoProfesor(Prof, NULL);
-		}
-		else {
-			actual = primero;
-			while (actual->getSiguiente() != NULL) {
-				actual = actual->getSiguiente();
-			}
-			actual->setSiguiente(new NodoProfesor(Prof, NULL));
-		}
-	}
 }
 bool ListaProfesor::ingresarProfesor(Profesor* Profesor) {
 	bool posible = !existe(Profesor);

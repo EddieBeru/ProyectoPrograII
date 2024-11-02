@@ -11,6 +11,9 @@ using namespace std;
 int main() {
 
 	//Crear Cosos
+
+	//ACORDARSE DE CAMBIAR EL MODO DE ARCHIVOS A APP CREO
+
 	ListaProfesor* L1=new ListaProfesor;
 	ListaEstudiante* E1 = new ListaEstudiante;
 	ListaPeriodo* P1 = new ListaPeriodo;
@@ -22,10 +25,12 @@ int main() {
 	L1->ingresarProfesor(p1);
 	L1->ingresarProfesor(p2);
 	L1->ingresarProfesor(p3);
+	cout << "LISTA ORIGINAL\n";
 	cout<<L1->toString() << endl<<endl<<endl;
 	L1->ingresarLista("ListaProf.txt"); //se mete normal
-	L1->sacarLista("ListaProf.txt");// hay uno vacio al final falta quitarlo
+	L1->sacarLista("ListaProf.txt");
 	cout << "AQUIIIIII\n\n";
+	cout << "LISTA REHECHA\n";
 	cout<<L1->toString() << endl << endl << endl;
 
 	Estudiante* e1 = new Estudiante("jose", "nose", "nose", 12, "nose");
@@ -36,10 +41,13 @@ int main() {
 	E1->ingresarEstudiante(e2);
 	E1->ingresarEstudiante(e3);
 	E1->ingresarEstudiante(e4);
+	cout << "LISTA ORIGINAL\n";
 	cout << E1->toString() << endl << endl << endl;
 	cout << "AAAQUIIIIII\n\n";
-	E1->ingresarLista("ListaEst.txt");//Entonces hay que cambiar este por el normal :)
+	E1->ingresarLista("ListaEst.txt");//Ya lo cambie :)
 	E1->sacarLista("ListaEst.txt");
+	cout << "LISTA REHECHA\n";
+	cout<<E1->toString()<<endl;
 
 
 
@@ -51,8 +59,12 @@ int main() {
 	P1->ingresarPeriodo(pe2);
 	P1->ingresarPeriodo(pe3);
 	P1->ingresarPeriodo(pe4);
+	cout << "LISTA ORIGINAL\n";
 	cout << P1->toString() << endl << endl << endl;
-	string archivo = "archivo.txt";
+	P1->ingresarLista("ListaPer.txt");
+	P1->sacarLista("ListaPer.txt");
+	cout << "LISTA REHECHA\n";
+	cout << P1->toString()<<endl;
 
 
 	Curso* c1 = new Curso("Ingles", "nose", 2, 2.3, true);
@@ -63,7 +75,13 @@ int main() {
 	C1->ingresarCurso(c2);
 	C1->ingresarCurso(c3);
 	C1->ingresarCurso(c4);
+	cout << "LISTA ORIGINAL\n";
 	cout << C1->toString() << endl << endl << endl;
+	C1->ingresarLista("ListaCursos.txt");
+	C1->sacarLista("ListaCursos.txt");
+	cout << "LISTA REHECHA\n";
+	cout<<C1->toString() << endl;
+
 
 
 	Horario* h1=new Horario(12, 1, 6);
@@ -81,7 +99,12 @@ int main() {
 	G1->ingresarGrupo(g2);  
 	G1->ingresarGrupo(g3);
 	G1->ingresarGrupo(g4);
+	cout << "LISTA ORIGINAL\n";
 	cout << G1->toString() << endl << endl << endl;
+	G1->ingresarLista("ListaGrupo.txt");
+	G1->sacarLista("ListaGrupo.txt");
+	cout << "LISTA REHECHA\n";
+	cout << G1->toString() << endl;
 
 
 

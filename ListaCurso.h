@@ -11,6 +11,8 @@ public:
 	ListaCurso();
 	virtual ~ListaCurso();
 
+	void ingresarLista(string);
+	void sacarLista(string);
 	bool ingresarCurso(Curso*);
 	bool eliminarCurso(Curso*);
 	bool modificarCurso(Curso*, Curso*);
