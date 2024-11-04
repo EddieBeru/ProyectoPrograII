@@ -11,6 +11,8 @@ public:
 	ListaPeriodo();
 	virtual ~ListaPeriodo();
 
+	void ingresarLista(string);
+	void sacarLista(string);
 	bool ingresarPeriodo(Periodo*);
 	bool eliminarPeriodo(Periodo*);
 	bool modificarPeriodo(Periodo*, Periodo*);

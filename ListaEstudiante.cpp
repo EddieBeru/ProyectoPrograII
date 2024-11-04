@@ -8,30 +8,53 @@ ListaEstudiante::~ListaEstudiante() {
 		delete actual;
 	}
 }
-void ListaEstudiante::ingresarLista(const string& archivo) {
+void ListaEstudiante::ingresarLista(string archivo) {
 	ofstream txt(archivo);
 	actual = this->primero;
 	while (actual != NULL) {
-		txt.write((char*)actual->getElemento(), sizeof(Estudiante));
+		txt << actual->getElemento()->getNombre() << " "
+			<< actual->getElemento()->getId() << " "
+			<< actual->getElemento()->getEspecialidad() << " "
+			<< actual->getElemento()->getNumero() << " "
+			<< actual->getElemento()->getEmail()  << endl;
 		actual = actual->getSiguiente();
-	}
-}
-void ListaEstudiante::sacarLista(const string& archivo) {
-	ifstream txt(archivo);
-	Estudiante* nuevoEstudiante = new Estudiante;
-	txt.read((char*)nuevoEstudiante, sizeof(Estudiante));
-	while (!txt.eof()) {
-		//CREARLE UN OBJETO Y AÑADIRLO A LA LISTA POSIBLEMENTE HAYA QUE VACIAR LA LISTA ANTES
-		cout << "Nombre: " << nuevoEstudiante->getNombre() << endl;
-		cout << "Id: " << nuevoEstudiante->getId() << endl;
-		cout << "esp: " << nuevoEstudiante->getEspecialidad() << endl;
-		cout << "email: " << nuevoEstudiante->getEmail() << endl;
-		cout << "nym: " << nuevoEstudiante->getNumero() << endl;
-		cout << "--------------------------" << endl;
-		txt.read((char*)nuevoEstudiante, sizeof(Estudiante));
 	}
 	txt.close();
 }
+void ListaEstudiante::sacarLista(string archivo) {
+	ifstream txt(archivo);
+	while (primero != NULL) {
+		actual = primero;
+		primero = primero->getSiguiente();
+		delete actual;
+	}
+	actual = primero;
+	string nombre, id, email, especialidad;
+	int numero;
+	txt >> nombre;
+	while (!txt.eof()) {
+
+		txt >> id;
+		txt >> especialidad;
+		txt >> numero;
+		txt >> email;
+
+
+		Estudiante* Est = new Estudiante(nombre, id, especialidad, numero, email);
+		if (primero == NULL) {
+			primero = new NodoEstudiante(Est, NULL);
+		}
+		else {
+			actual = primero;
+			while (actual->getSiguiente() != NULL) {
+				actual = actual->getSiguiente();
+			}
+			actual->setSiguiente(new NodoEstudiante(Est, NULL));
+		}
+		txt >> nombre;
+	}
+}
+
 bool ListaEstudiante::ingresarEstudiante(Estudiante* Estudiante) {
 	bool posible = !existe(Estudiante);
 	if (posible) {

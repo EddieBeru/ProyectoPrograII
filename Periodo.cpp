@@ -24,6 +24,9 @@ string Periodo::FechaInicial(int per) {
 	}
 	return s.str();
 }
+int Periodo::getPeriodo() { return periodo; }
+string Periodo::getFechaInicial() { return fechaInicial; }
+string Periodo::getFechaFinal() { return fechaFinal; }
 string Periodo::FechaFinal(int per) {
 	stringstream s;
 	switch (per) {

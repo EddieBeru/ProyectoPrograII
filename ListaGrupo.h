@@ -11,6 +11,8 @@ public:
 	ListaGrupo();
 	virtual ~ListaGrupo();
 
+	void ingresarLista(string);
+	void sacarLista(string);
 	bool ingresarGrupo(Grupo*);
 	bool eliminarGrupo(Grupo*);
 	bool modificarGrupo(Grupo*, Grupo*);
