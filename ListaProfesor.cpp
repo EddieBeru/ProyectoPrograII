@@ -31,6 +31,14 @@ Profesor* ListaProfesor::getProfesorEspecifico(int pos) {
 		else
 			return actual->getElemento();
 }
+
+Profesor* ListaProfesor::getProfesorPorId(string id) {
+	actual = primero;
+	while (actual != NULL && actual->getElemento()->getId() != id)
+		actual = actual->getSiguiente();
+	return actual != NULL ? actual->getElemento() : NULL;
+
+}
 void ListaProfesor::sacarLista(const string& archivo) {
 	ifstream txt(archivo);
 	while (primero != NULL) {

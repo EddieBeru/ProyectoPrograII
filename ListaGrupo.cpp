@@ -66,6 +66,18 @@ bool ListaGrupo::existe(Grupo* Grupo) {
 	return posible;
 }
 
+Grupo* ListaGrupo::getGrupoPorNum(int num) {
+	Grupo* Grupo = NULL;
+	if (primero != NULL) {
+		actual = primero;
+		while (actual != NULL && actual->getElemento()->getNumeroGrupo() != num)
+			actual = actual->getSiguiente();
+		if (actual != NULL)
+			Grupo = actual->getElemento();
+	}
+	return Grupo;
+}
+
 string ListaGrupo::toString() {
 	stringstream s;
 	actual = primero;

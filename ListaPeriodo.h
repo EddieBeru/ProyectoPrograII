@@ -15,6 +15,7 @@ public:
 	bool eliminarPeriodo(Periodo*);
 	bool modificarPeriodo(Periodo*, Periodo*);
 	bool existe(Periodo*);
+	Periodo* getPeriodoPorNum(int);
 
 	string toString() ;
 };

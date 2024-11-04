@@ -67,6 +67,13 @@ bool ListaPeriodo::existe(Periodo* Periodo) {
 	return posible;
 }
 
+Periodo* ListaPeriodo::getPeriodoPorNum(int num) {
+	actual = primero;
+	while (actual != NULL && actual->getElemento()->getPeriodo() != num)
+		actual = actual->getSiguiente();
+	return actual == NULL ? NULL : actual->getElemento();
+}
+
 string ListaPeriodo::toString() {
 	stringstream s;
 	actual = primero;

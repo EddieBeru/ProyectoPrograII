@@ -10,6 +10,7 @@ private:
 	string fechaFinal;
 public:
 	Periodo(int);
+	int getPeriodo();
 	string FechaInicial(int);
 	string FechaFinal(int);
 	string toString() const;

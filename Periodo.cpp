@@ -5,6 +5,7 @@ Periodo::Periodo(int per) {
 	fechaInicial = FechaInicial(per);
 	fechaFinal = FechaFinal(per);
 }
+int Periodo::getPeriodo() { return periodo; }
 string Periodo::FechaInicial(int per) {
 	stringstream s;
 	switch (per) {

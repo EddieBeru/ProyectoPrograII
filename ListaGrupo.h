@@ -15,6 +15,7 @@ public:
 	bool eliminarGrupo(Grupo*);
 	bool modificarGrupo(Grupo*, Grupo*);
 	bool existe(Grupo*);
+	Grupo* getGrupoPorNum(int);
 
 	string toString() ;
 };

@@ -65,6 +65,12 @@ bool ListaCurso::existe(Curso* curso) {
 	}
 	return posible;
 }
+Curso* ListaCurso::getCursoPorId(string id) {
+	actual = primero;
+	while (actual != NULL && actual->getElemento()->getId() != id)
+		actual = actual->getSiguiente();
+	return actual != NULL ? actual->getElemento() : NULL;
+}
 
 string ListaCurso::toString() {
 	stringstream s;
