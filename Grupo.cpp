@@ -13,9 +13,9 @@ int Grupo::getNumeroGrupo() { return numeroGrupo; }
 int Grupo::getCapacidadAlumnos() { return capacidadAlumnos; }
 int Grupo::getCantidadAlumnos() { return cantidadAlumnos; }
 Horario* Grupo::getHorario() { return horario; }
-Curso* Grupo::getCurso() { return curso; }
-Periodo* Grupo::getPeriodo() { return periodo; }
-Profesor* Grupo::getProfesor() { return profesor; }
+//Curso* Grupo::getCurso() { return curso; }
+//Periodo* Grupo::getPeriodo() { return periodo; }
+// Grupo::getProfesor() { return profesor; }
 
 void Grupo::setNumeroGrupo(int num) { numeroGrupo = num; }
 void Grupo::setCapacidadAlumnos(int cap) { capacidadAlumnos = cap; }
