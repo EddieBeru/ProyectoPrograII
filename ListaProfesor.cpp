@@ -7,7 +7,7 @@ ListaProfesor::~ListaProfesor() {
 		delete actual;
 	}
 }
-void ListaProfesor::ingresarLista(const string& archivo) {
+void ListaProfesor::ingresarLista(string archivo) {
 	ofstream txt(archivo);
 	actual = this->primero;
 	while (actual != NULL) {
@@ -39,7 +39,7 @@ Profesor* ListaProfesor::getProfesorPorId(string id) {
 	return actual != NULL ? actual->getElemento() : NULL;
 
 }
-void ListaProfesor::sacarLista(const string& archivo) {
+void ListaProfesor::sacarLista(string archivo) {
 	ifstream txt(archivo);
 	while (primero != NULL) {
 		actual = primero;

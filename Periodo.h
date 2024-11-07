@@ -11,6 +11,8 @@ private:
 public:
 	Periodo(int);
 	int getPeriodo();
+	string getFechaInicial();
+	string getFechaFinal();
 	string FechaInicial(int);
 	string FechaFinal(int);
 	string toString() const;
