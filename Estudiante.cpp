@@ -1,4 +1,5 @@
 #include "Estudiante.h"
+#include "ListaGrupo.h"
 
 Estudiante::Estudiante(string nom, string ide, string esp, int num, string mail) {
 	strcpy_s(nombre, nom.c_str());
@@ -6,6 +7,7 @@ Estudiante::Estudiante(string nom, string ide, string esp, int num, string mail)
 	especialidad = esp;
 	numero = num;
 	email = mail;
+	cursosMatriculados = new ListaGrupo();
 }
 
 Estudiante::~Estudiante(){
@@ -17,6 +19,7 @@ string Estudiante::getId() { return id; }
 string Estudiante::getEspecialidad() { return especialidad; }
 int Estudiante::getNumero() { return numero; }
 string Estudiante::getEmail() { return email; }
+ListaGrupo* Estudiante::getGruposMatriculados(){ return cursosMatriculados; }
 
 void Estudiante::setNombre(string nom){
 	strcpy_s(nombre, nom.c_str());
@@ -32,6 +35,13 @@ void Estudiante::setNumero(int num){
 }
 void Estudiante::setEmail(string mail){
 	email = mail;
+}
+
+void Estudiante::matricularGrupo(Grupo* grup) {
+	cursosMatriculados->ingresarGrupo(grup);
+}
+void Estudiante::anularGrupo(Grupo* grup) {
+	cursosMatriculados->eliminarGrupo(grup);
 }
 
 string Estudiante::toString() const { 

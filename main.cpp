@@ -155,30 +155,30 @@ int main() {
 				cout << "Ingrese la capacidad del grupo: ";
 				cin >> capacidad;
 				cout << "Ingrese el curso del grupo: ";
-					//Listar cursos
-					cout << ListCur->toString() << endl;
-					string cursoId;
-					cout << "Ingrese el id del curso: ";
-					cin.ignore();
-					getline(cin, cursoId);
-					curso = ListCur->getCursoPorId(cursoId);
+				//Listar cursos
+				cout << ListCur->toString() << endl;
+				string cursoId;
+				cout << "Ingrese el id del curso: ";
+				cin.ignore();
+				getline(cin, cursoId);
+				curso = ListCur->getCursoPorId(cursoId);
 				cout << "Crear el horario del grupo: ";
-					//Crear horario
-					int horaInicio, horaFinal, diasSemana;
-					cout << "Ingrese la hora de inicio: ";
-					cin >> horaInicio;
-					cout << "Ingrese la hora final: ";
-					cin >> horaFinal;
-					cout << "Ingrese los dias de la semana: ";
-					cin >> diasSemana;
-					horario = new Horario(horaInicio, horaFinal, diasSemana);
+				//Crear horario
+				int horaInicio, horaFinal, diasSemana;
+				cout << "Ingrese la hora de inicio: ";
+				cin >> horaInicio;
+				cout << "Ingrese la hora final: ";
+				cin >> horaFinal;
+				cout << "Ingrese los dias de la semana: ";
+				cin >> diasSemana;
+				horario = new Horario(horaInicio, horaFinal, diasSemana);
 				cout << "Ingrese el periodo del grupo: ";
-					//Listar periodos
-					cout << ListPer->toString() << endl;
-					int periodoNum;
-					cout << "Ingrese el numero del periodo: ";
-					cin >> periodoNum;
-					periodo = ListPer->getPeriodoPorNum(periodoNum);
+				//Listar periodos
+				cout << ListPer->toString() << endl;
+				int periodoNum;
+				cout << "Ingrese el numero del periodo: ";
+				cin >> periodoNum;
+				periodo = ListPer->getPeriodoPorNum(periodoNum);
 				//Creacion e ingreso
 				Grupo* grupo = new Grupo(numero, capacidad, cantidad, horario, curso, periodo);
 				if (ListGru->ingresarGrupo(grupo))
@@ -193,20 +193,20 @@ int main() {
 				Profesor* profesorElegido;
 				//Recoleccion de datos
 				cout << "Ingrese el grupo a cambiar de profesor: \n";
-					//Listar grupos
-					cout << ListGru->toString() << endl;
-					int grupoNum;
-					cout << "Ingrese el numero del grupo: ";
-					cin >> grupoNum;
-					grupoElegido = ListGru->getGrupoPorNum(grupoNum);
+				//Listar grupos
+				cout << ListGru->toString() << endl;
+				int grupoNum;
+				cout << "Ingrese el numero del grupo: ";
+				cin >> grupoNum;
+				grupoElegido = ListGru->getGrupoPorNum(grupoNum);
 				cout << "Ingrese el profesor a asignar al grupo: \n";
-					//Listar profesores
-					cout << ListProf->toString() << endl;
-					string profesorId;
-					cout << "Ingrese el id del profesor: ";
-					cin.ignore();
-					getline(cin, profesorId);
-					profesorElegido = ListProf->getProfesorPorId(profesorId);
+				//Listar profesores
+				cout << ListProf->toString() << endl;
+				string profesorId;
+				cout << "Ingrese el id del profesor: ";
+				cin.ignore();
+				getline(cin, profesorId);
+				profesorElegido = ListProf->getProfesorPorId(profesorId);
 				grupoElegido->setProfesor(profesorElegido);
 				cout << "Realizado con exito. \n";
 				break;
@@ -231,43 +231,17 @@ int main() {
 			switch (opcion2) {
 			case 1:
 			{
-				//Submenu Matriculas
-				while (opcion3 < 0 || opcion3 > 6) {
-					cout << "Inserte bienvenida aca de nuevo jajaja \n"
-						<< "(1) Informe Profesores Registrados \n"
-						<< "(2) Informe Estudiantes Registrados \n"
-						<< "(3) Informe Cursos Matriculados por un Estudiante \n"
-						<< "(4) Informe Profesor Especifico \n"
-						<< "(5) Informe Periodos Habilitados para el Annio \n"
-						<< "(6) Informe Grupo Especifico \n"
-						<< "(0) Regresar al Menu Principal \n"
-						<< "Ingrese una opcion: ";
-					cin >> opcion3;
-				}
-				switch (opcion3) {
-				case 1:
-					//Informe Profesores Registrados
-					break;
-				case 2:
-					//Informe Estudiantes Registrados
-					break;
-				case 3:
-					//Informe Cursos Matriculados por un Estudiante
-					break;
-				case 4:
-					//Informe Profesor Especifico
-					break;
-				case 5:
-					//Informe Periodos Habilitados para el Annio
-					break;
-				case 6:
-					//Informe Grupo Especifico
-					break;
-
-				}
-				break;
+				//Matricular Estudiante
 			}
+			break;
+			case 2:
+			{
+				//Desmatricular Estudiante
 			}
+			break;
+			}
+			system("pause");
+			break;
 		}
 		case 3: {
 			//Submenu Busquedas e Informes
@@ -285,27 +259,47 @@ int main() {
 				cin >> opcion2;
 			}
 			switch (opcion2) {
-				case 1:
+			case 1:
+			{
 				//Informe Profesores Registrados
-				break;
-				case 2:
+				cout << "Informe Profesores Registrados \n\n"
+					<< ListProf->toString() << endl;
+			}
+			break;
+			case 2:
+			{
 				//Informe Estudiantes Registrados
-				break;
-				case 3:
+				cout << "Informe Estudiantes Registrados \n\n"
+					<< ListEst->toString() << endl;
+			}
+			break;
+			case 3:
+			{
 				//Informe Cursos Matriculados por un Estudiante
-				break;
-				case 4:
+				cout << "Informe Cursos Matriculados por un Estudiante \n\n"
+					<< "Ingrese el id del estudiante: ";
+				string id;
+				cin.ignore();
+				getline(cin, id);
+				Estudiante* est = ListEst->getEstudiantePorId(id);
+				cout << est->getGruposMatriculados()->toString() << endl;
+			}
+			break;
+			case 4:
 				//Informe Profesor Especifico
 				break;
-				case 5:
+			case 5:
 				//Informe Periodos Habilitados para el Annio
 				break;
-				case 6:
+			case 6:
 				//Informe Grupo Especifico
 				break;
-				}
-			break;
+				break;
 			}
+			system("pause");
+			break;
+
+		}
 		}
 	} while (opcion != 5);
 	
