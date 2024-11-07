@@ -14,295 +14,316 @@ int main() {
 	ListaPeriodo* ListPer = new ListaPeriodo;
 	ListaCurso* ListCur = new ListaCurso;
 	ListaGrupo* ListGru = new ListaGrupo;
-	int opcion = -1;
-	do {
-		while (opcion < 0 || opcion > 5) {
-			system("cls");
-			cout << "Insertar bienvenida general aca \n"
-				<< "(1) - Submenu Administracion \n"
-				<< "(2) - Submenu Matricula \n"
-				<< "(3) - Submenu Busquedas e Informes \n"
-				<< "(4) - Guardar los Datos en Archivos \n"
-				<< "(5) - Salir \n"
-				<< "Ingrese una opcion: ";
-			cin >> opcion;
-		}
-		int opcion2 = -1;
-		switch (opcion) {
-		case 1:
-		{
-			//Submenu Administracion
-			while (opcion2 < 0 || opcion > 6) {
-				system("cls");
-				cout << "Otra bienvenida mas que hacer \n"
-					<< "(1) Ingresar Profesor \n"
-					<< "(2) Ingresar Estudiante \n"
-					<< "(3) Ingresar Bloque o Periodo \n"
-					<< "(4) Ingresar Curso \n"
-					<< "(5) Ingresar Grupo \n"
-					<< "(6) Asignar Profesor a Grupo \n"
-					<< "(0) Regresar al Menu Principal \n"
-					<< "Ingrese una opcion: ";
-				cin >> opcion2;
-			}
-			int opcion3 = -1;
-			switch (opcion2) {
-			case 1:
-			{
-				//Ingresar Profesor
-				string nombre, id, email, gradoAcademico;
-				int numero;
-				//Recoleccion de datos
-				cout << "Ingresar profesor. \n\n"
-					<< "Ingrese el nombre del profesor: ";
-				cin.ignore();
-				getline(cin, nombre);
-				cout << "Ingrese el id del profesor: ";
-				getline(cin, id);
-				cout << "Ingrese el numero del profesor: ";
-				cin >> numero;
-				cout << "Ingrese el email del profesor: ";
-				cin.ignore();
-				getline(cin, email);
-				cout << "Ingrese el grado academico del profesor: ";
-				getline(cin, gradoAcademico);
-				//Creacion e ingreso
-				Profesor* profesor = new Profesor(nombre, id, numero, email, gradoAcademico);
-				if (ListProf->ingresarProfesor(profesor))
-					cout << "Realizado con exito. \n";
-				else cout << "Ocurrio un error. \n";
-				break;
-			}
-			case 2:
-			{
-				//Ingresar Estudiante
-				string nombre, id, especialidad, email;
-				int numero;
-				//Recoleccion de datos
-				cout << "Ingresar estudiante. \n\n"
-					<< "Ingrese el nombre del estudiante: ";
-				cin.ignore();
-				getline(cin, nombre);
-				cout << "Ingrese el id del estudiante: ";
-				getline(cin, id);
-				cout << "Ingrese la especialidad del estudiante: ";
-				getline(cin, especialidad);
-				cout << "Ingrese el numero del estudiante: ";
-				cin >> numero;
-				cout << "Ingrese el email del estudiante: ";
-				cin.ignore();
-				getline(cin, email);
-				//Creacion e ingreso
-				Estudiante* estudiante = new Estudiante(nombre, id, especialidad, numero, email);
-				if (ListEst->ingresarEstudiante(estudiante))
-					cout << "Realizado con exito. \n";
-				else cout << "Ocurrio un error. \n";
-				break;
-			}
-			case 3:
-			{
-				//Ingresar Bloque o Periodo
-				int periodoNum;
-				//Recoleccion de datos
-				cout << "Ingresar periodo. \n\n"
-					<< "Ingrese el numero del periodo: ";
-				cin >> periodoNum;
-				//Creacion e ingreso
-				Periodo* periodo = new Periodo(periodoNum);
-				if (ListPer->ingresarPeriodo(periodo))
-					cout << "Realizado con exito. \n";
-				else cout << "Ocurrio un error. \n";
-				break;
-			}
-			case 4:
-			{
-				//Ingresar Curso
-				string nombre, id;
-				int horas;
-				float precio;
-				bool estado;
-				//Recoleccion de datos
-				cout << "Ingresar curso. \n\n"
-					<< "Ingrese el nombre del curso: ";
-				cin.ignore();
-				getline(cin, nombre);
-				cout << "Ingrese el id del curso: ";
-				getline(cin, id);
-				cout << "Ingrese las horas del curso: ";
-				cin >> horas;
-				cout << "Ingrese el precio del curso: ";
-				cin >> precio;
-				cout << "Ingrese el estado del curso (1 para disponible, 0 para no disponible): ";
-				cin >> estado;
-				//Creacion e ingreso
-				Curso* curso = new Curso(nombre, id, horas, precio, estado);
-				if (ListCur->ingresarCurso(curso))
-					cout << "Realizado con exito. \n";
-				else cout << "Ocurrio un error. \n";
-				break;
-			}
-			case 5:
-			{
-				//Ingresar Grupo
-				int numero, capacidad, cantidad = 0;
-				Curso* curso;
-				Horario* horario;
-				Periodo* periodo;
-				//Recoleccion de datos
-				cout << "Ingresar grupo. \n\n"
-					<< "Ingrese el numero del grupo: ";
-				cin >> numero;
-				cout << "Ingrese la capacidad del grupo: ";
-				cin >> capacidad;
-				cout << "Ingrese el curso del grupo: ";
-				//Listar cursos
-				cout << ListCur->toString() << endl;
-				string cursoId;
-				cout << "Ingrese el id del curso: ";
-				cin.ignore();
-				getline(cin, cursoId);
-				curso = ListCur->getCursoPorId(cursoId);
-				cout << "Crear el horario del grupo: ";
-				//Crear horario
-				int horaInicio, horaFinal, diasSemana;
-				cout << "Ingrese la hora de inicio: ";
-				cin >> horaInicio;
-				cout << "Ingrese la hora final: ";
-				cin >> horaFinal;
-				cout << "Ingrese los dias de la semana: ";
-				cin >> diasSemana;
-				horario = new Horario(horaInicio, horaFinal, diasSemana);
-				cout << "Ingrese el periodo del grupo: ";
-				//Listar periodos
-				cout << ListPer->toString() << endl;
-				int periodoNum;
-				cout << "Ingrese el numero del periodo: ";
-				cin >> periodoNum;
-				periodo = ListPer->getPeriodoPorNum(periodoNum);
-				//Creacion e ingreso
-				Grupo* grupo = new Grupo(numero, capacidad, cantidad, horario, curso, periodo);
-				if (ListGru->ingresarGrupo(grupo))
-					cout << "Realizado con exito \n.";
-				else cout << "Ocurrio un error. \n";
-				break;
-			}
-			case 6:
-			{
-				//Asignar Profesor a Grupo
-				Grupo* grupoElegido;
-				Profesor* profesorElegido;
-				//Recoleccion de datos
-				cout << "Ingrese el grupo a cambiar de profesor: \n";
-				//Listar grupos
-				cout << ListGru->toString() << endl;
-				int grupoNum;
-				cout << "Ingrese el numero del grupo: ";
-				cin >> grupoNum;
-				grupoElegido = ListGru->getGrupoPorNum(grupoNum);
-				cout << "Ingrese el profesor a asignar al grupo: \n";
-				//Listar profesores
-				cout << ListProf->toString() << endl;
-				string profesorId;
-				cout << "Ingrese el id del profesor: ";
-				cin.ignore();
-				getline(cin, profesorId);
-				profesorElegido = ListProf->getProfesorPorId(profesorId);
-				grupoElegido->setProfesor(profesorElegido);
-				cout << "Realizado con exito. \n";
-				break;
-			}
-			}
-			system("pause");
-			break;
-		}
-		case 2:
-		{
-			// Submenu Matricula
-			while (opcion2 < 0 || opcion2 > 2) {
-				system("cls");
-				cout << "Inserte bienvenida aca \n"
-					<< "(1) Matricular Estudiante \n"
-					<< "(2) Desmatricular Estudiante \n"
-					<< "(0) Regresar al menu Principal \n"
-					<< "Ingrese una opcion: ";
-				cin >> opcion2;
-			}
-			int opcion3 = -1;
-			switch (opcion2) {
-			case 1:
-			{
-				//Matricular Estudiante
-			}
-			break;
-			case 2:
-			{
-				//Desmatricular Estudiante
-			}
-			break;
-			}
-			system("pause");
-			break;
-		}
-		case 3: {
-			//Submenu Busquedas e Informes
-			while (opcion2 < 0 || opcion2 > 6) {
-				system("cls");
-				cout << "Inserte bienvenida aca \n"
-					<< "(1) Informe Profesores Registrados \n"
-					<< "(2) Informe Estudiantes Registrados \n"
-					<< "(3) Informe Cursos Matriculados por un Estudiante \n"
-					<< "(4) Informe Profesor Especifico \n"
-					<< "(5) Informe Periodos Habilitados para el Annio \n"
-					<< "(6) Informe Grupo Especifico \n"
-					<< "(0) Regresar al Menu Principal \n"
-					<< "Ingrese una opcion: ";
-				cin >> opcion2;
-			}
-			switch (opcion2) {
-			case 1:
-			{
-				//Informe Profesores Registrados
-				cout << "Informe Profesores Registrados \n\n"
-					<< ListProf->toString() << endl;
-			}
-			break;
-			case 2:
-			{
-				//Informe Estudiantes Registrados
-				cout << "Informe Estudiantes Registrados \n\n"
-					<< ListEst->toString() << endl;
-			}
-			break;
-			case 3:
-			{
-				//Informe Cursos Matriculados por un Estudiante
-				cout << "Informe Cursos Matriculados por un Estudiante \n\n"
-					<< "Ingrese el id del estudiante: ";
-				string id;
-				cin.ignore();
-				getline(cin, id);
-				Estudiante* est = ListEst->getEstudiantePorId(id);
-				cout << est->getGruposMatriculados()->toString() << endl;
-			}
-			break;
-			case 4:
-				//Informe Profesor Especifico
-				break;
-			case 5:
-				//Informe Periodos Habilitados para el Annio
-				break;
-			case 6:
-				//Informe Grupo Especifico
-				break;
-				break;
-			}
-			system("pause");
-			break;
-
-		}
-		}
-	} while (opcion != 5);
-	
+	ListaMatricula* ListMat = new ListaMatricula;
+//	int opcion = -1;
+//	do {
+//	opcion = -1;
+//		while (opcion < 0 || opcion > 5) {
+//			system("cls");
+//			cout << "Insertar bienvenida general aca \n"
+//				<< "(1) - Submenu Administracion \n"
+//				<< "(2) - Submenu Matricula \n"
+//				<< "(3) - Submenu Busquedas e Informes \n"
+//				<< "(4) - Guardar los Datos en Archivos \n"
+//				<< "(5) - Salir \n"
+//				<< "Ingrese una opcion: ";
+//			cin >> opcion;
+//		}
+//		int opcion2 = -1;
+//		switch (opcion) {
+//		case 1:
+//		{
+//			//Submenu Administracion
+//			while (opcion2 != 0 || opcion > 6) {
+//				system("cls");
+//				cout << "Otra bienvenida mas que hacer \n"
+//					<< "(1) Ingresar Profesor \n"
+//					<< "(2) Ingresar Estudiante \n"
+//					<< "(3) Ingresar Bloque o Periodo \n"
+//					<< "(4) Ingresar Curso \n"
+//					<< "(5) Ingresar Grupo \n"
+//					<< "(6) Asignar Profesor a Grupo \n"
+//					<< "(0) Regresar al Menu Principal \n"
+//					<< "Ingrese una opcion: ";
+//				cin >> opcion2;
+//			}
+//			int opcion3 = -1;
+//			switch (opcion2) {
+//			case 1:
+//			{
+//				//Ingresar Profesor
+//				string nombre, id, email, gradoAcademico;
+//				int numero;
+//				//Recoleccion de datos
+//				cout << "Ingresar profesor. \n\n"
+//					<< "Ingrese el nombre del profesor: ";
+//				cin.ignore();
+//				getline(cin, nombre);
+//				cout << "Ingrese el id del profesor: ";
+//				getline(cin, id);
+//				cout << "Ingrese el numero del profesor: ";
+//				cin >> numero;
+//				cout << "Ingrese el email del profesor: ";
+//				cin.ignore();
+//				getline(cin, email);
+//				cout << "Ingrese el grado academico del profesor: ";
+//				getline(cin, gradoAcademico);
+//				//Creacion e ingreso
+//				Profesor* profesor = new Profesor(nombre, id, numero, email, gradoAcademico);
+//				if (ListProf->ingresarProfesor(profesor))
+//					cout << "Realizado con exito. \n";
+//				else cout << "Ocurrio un error. \n";
+//				break;
+//			}
+//			case 2:
+//			{
+//				//Ingresar Estudiante
+//				string nombre, id, especialidad, email;
+//				int numero;
+//				//Recoleccion de datos
+//				cout << "Ingresar estudiante. \n\n"
+//					<< "Ingrese el nombre del estudiante: ";
+//				cin.ignore();
+//				getline(cin, nombre);
+//				cout << "Ingrese el id del estudiante: ";
+//				getline(cin, id);
+//				cout << "Ingrese la especialidad del estudiante: ";
+//				getline(cin, especialidad);
+//				cout << "Ingrese el numero del estudiante: ";
+//				cin >> numero;
+//				cout << "Ingrese el email del estudiante: ";
+//				cin.ignore();
+//				getline(cin, email);
+//				//Creacion e ingreso
+//				Estudiante* estudiante = new Estudiante(nombre, id, especialidad, numero, email);
+//				if (ListEst->ingresarEstudiante(estudiante))
+//					cout << "Realizado con exito. \n";
+//				else cout << "Ocurrio un error. \n";
+//				break;
+//			}
+//			case 3:
+//			{
+//				//Ingresar Bloque o Periodo
+//				int periodoNum;
+//				//Recoleccion de datos
+//				cout << "Ingresar periodo. \n\n"
+//					<< "Ingrese el numero del periodo: ";
+//				cin >> periodoNum;
+//				//Creacion e ingreso
+//				Periodo* periodo = new Periodo(periodoNum);
+//				if (ListPer->ingresarPeriodo(periodo))
+//					cout << "Realizado con exito. \n";
+//				else cout << "Ocurrio un error. \n";
+//				break;
+//			}
+//			case 4:
+//			{
+//				//Ingresar Curso
+//				string nombre, id;
+//				int horas;
+//				float precio;
+//				bool estado;
+//				//Recoleccion de datos
+//				cout << "Ingresar curso. \n\n"
+//					<< "Ingrese el nombre del curso: ";
+//				cin.ignore();
+//				getline(cin, nombre);
+//				cout << "Ingrese el id del curso: ";
+//				getline(cin, id);
+//				cout << "Ingrese las horas del curso: ";
+//				cin >> horas;
+//				cout << "Ingrese el precio del curso: ";
+//				cin >> precio;
+//				cout << "Ingrese el estado del curso (1 para disponible, 0 para no disponible): ";
+//				cin >> estado;
+//				//Creacion e ingreso
+//				Curso* curso = new Curso(nombre, id, horas, precio, estado);
+//				if (ListCur->ingresarCurso(curso))
+//					cout << "Realizado con exito. \n";
+//				else cout << "Ocurrio un error. \n";
+//				break;
+//			}
+//			case 5:
+//			{
+//				//Ingresar Grupo
+//				int numero, capacidad, cantidad = 0;
+//				Curso* curso;
+//				Horario* horario;
+//				Periodo* periodo;
+//				//Recoleccion de datos
+//				cout << "Ingresar grupo. \n\n"
+//					<< "Ingrese el numero del grupo: ";
+//				cin >> numero;
+//				cout << "Ingrese la capacidad del grupo: ";
+//				cin >> capacidad;
+//				cout << "Ingrese el curso del grupo: ";
+//				//Listar cursos
+//				cout << ListCur->toString() << endl;
+//				string cursoId;
+//				cout << "Ingrese el id del curso: ";
+//				cin.ignore();
+//				getline(cin, cursoId);
+//				curso = ListCur->getCursoPorId(cursoId);
+//				cout << "Crear el horario del grupo: ";
+//				//Crear horario
+//				int horaInicio, horaFinal, diasSemana;
+//				cout << "Ingrese la hora de inicio: ";
+//				cin >> horaInicio;
+//				cout << "Ingrese la hora final: ";
+//				cin >> horaFinal;
+//				cout << "Ingrese los dias de la semana: ";
+//				cin >> diasSemana;
+//				horario = new Horario(horaInicio, horaFinal, diasSemana);
+//				cout << "Ingrese el periodo del grupo: ";
+//				//Listar periodos
+//				cout << ListPer->toString() << endl;
+//				int periodoNum;
+//				cout << "Ingrese el numero del periodo: ";
+//				cin >> periodoNum;
+//				periodo = ListPer->getPeriodoPorNum(periodoNum);
+//				//Creacion e ingreso
+//				Grupo* grupo = new Grupo(numero, capacidad, cantidad, horario, curso, periodo);
+//				if (ListGru->ingresarGrupo(grupo))
+//					cout << "Realizado con exito \n.";
+//				else cout << "Ocurrio un error. \n";
+//				break;
+//			}
+//			case 6:
+//			{
+//				//Asignar Profesor a Grupo
+//				Grupo* grupoElegido;
+//				Profesor* profesorElegido;
+//				//Recoleccion de datos
+//				cout << "Ingrese el grupo a cambiar de profesor: \n";
+//				//Listar grupos
+//				cout << ListGru->toString() << endl;
+//				int grupoNum;
+//				cout << "Ingrese el numero del grupo: ";
+//				cin >> grupoNum;
+//				grupoElegido = ListGru->getGrupoPorNum(grupoNum);
+//				cout << "Ingrese el profesor a asignar al grupo: \n";
+//				//Listar profesores
+//				cout << ListProf->toString() << endl;
+//				string profesorId;
+//				cout << "Ingrese el id del profesor: ";
+//				cin.ignore();
+//				getline(cin, profesorId);
+//				profesorElegido = ListProf->getProfesorPorId(profesorId);
+//				grupoElegido->setProfesor(profesorElegido);
+//				cout << "Realizado con exito. \n";
+//				break;
+//			}
+//			}
+//			system("pause");
+//			break;
+//		}
+//		case 2:
+//		{
+//			// Submenu Matricula
+//			while (opcion2 < 0 || opcion2 > 2) {
+//				system("cls");
+//				cout << "Inserte bienvenida aca \n"
+//					<< "(1) Matricular Estudiante \n"
+//					<< "(2) Desmatricular Estudiante \n"
+//					<< "(0) Regresar al menu Principal \n"
+//					<< "Ingrese una opcion: ";
+//				cin >> opcion2;
+//			}
+//			int opcion3 = -1;
+//			switch (opcion2) {
+//			case 1:
+//			{
+//				int periodo;
+//				int pos;
+//				//Matricular Estudiante
+//				cout << "Eliga el Periodo: " << endl;
+//				cout<<ListPer->toString()<<endl;
+//				cin >> periodo;
+//				Periodo* per=new Periodo(periodo);
+//				cout << "Eliga al curso al cual quiere matricular: " << endl;
+//				cout<<ListCur->toString() << endl;
+//				cin >> pos;
+//				Curso* cur = ListCur->getCursoPos(pos);
+//				cout << "Ahora eliga el grupo: " << endl;
+//				cin >> pos;
+//				Grupo* gru=ListGru->getGrupoPos(pos);
+//				cout << "Eliga el estudiante: " << endl;
+//				cout<<ListEst->toString() << endl;
+//				cin >> pos;
+//				Estudiante* est=ListEst->getEstudiantePos(pos);
+//				Matricula* mat = new Matricula(per, cur, gru, est);
+//				ListMat->ingresarMatricula(mat);
+//			}
+//			break;
+//			case 2:
+//			{
+//				//Desmatricular Estudiante
+//			}
+//			break;
+//			}
+//			system("pause");
+//			break;
+//		}
+//		case 3: {
+//			//Submenu Busquedas e Informes
+//			while (opcion2 < 0 || opcion2 > 6) {
+//				system("cls");
+//				cout << "Inserte bienvenida aca \n"
+//					<< "(1) Informe Profesores Registrados \n"
+//					<< "(2) Informe Estudiantes Registrados \n"
+//					<< "(3) Informe Cursos Matriculados por un Estudiante \n"
+//					<< "(4) Informe Profesor Especifico \n"
+//					<< "(5) Informe Periodos Habilitados para el Annio \n"
+//					<< "(6) Informe Grupo Especifico \n"
+//					<< "(0) Regresar al Menu Principal \n"
+//					<< "Ingrese una opcion: ";
+//				cin >> opcion2;
+//			}
+//			switch (opcion2) {
+//			case 1:
+//			{
+//				//Informe Profesores Registrados
+//				cout << "Informe Profesores Registrados \n\n"
+//					<< ListProf->toString() << endl;
+//			}
+//			break;
+//			case 2:
+//			{
+//				//Informe Estudiantes Registrados
+//				cout << "Informe Estudiantes Registrados \n\n"
+//					<< ListEst->toString() << endl;
+//			}
+//			break;
+//			case 3:
+//			{
+//				//Informe Cursos Matriculados por un Estudiante
+//				cout << "Informe Cursos Matriculados por un Estudiante \n\n"
+//					<< "Ingrese el id del estudiante: ";
+//				string id;
+//				cin.ignore();
+//				getline(cin, id);
+//				Estudiante* est = ListEst->getEstudiantePorId(id);
+//				cout << est->getGruposMatriculados()->toString() << endl;
+//			}
+//			break;
+//			case 4:
+//				//Informe Profesor Especifico
+//				break;
+//			case 5:
+//				//Informe Periodos Habilitados para el Annio
+//				break;
+//			case 6:
+//				//Informe Grupo Especifico
+//				break;
+//				break;
+//			}
+//			system("pause");
+//			break;
+//
+//		}
+//		}
+//	} while (opcion != 5);
+//	
 	//Crear Cosos
 
 	//ACORDARSE DE CAMBIAR EL MODO DE ARCHIVOS A APP CREO
@@ -404,10 +425,10 @@ int main() {
 	//Matricula 
 	cout << "MATRICULAAAA"<<endl;
 	ListaMatricula* M1=new ListaMatricula;
-	Matricula* mat = new Matricula(pe1, c1, g1, e1);
-	Matricula* mat1 = new Matricula(pe1, c1, g1, e1);
-	Matricula* mat2 = new Matricula(pe1, c1, g1, e1);
-	Matricula* mat3 = new Matricula(pe1, c1, g1, e1);
+	Matricula* mat = new Matricula(g1, e1);
+	Matricula* mat1 = new Matricula(g1, e1);
+	Matricula* mat2 = new Matricula(g1, e1);
+	Matricula* mat3 = new Matricula(g1, e1);
 
 	M1->ingresarMatricula(mat);
 	M1->ingresarMatricula(mat1);

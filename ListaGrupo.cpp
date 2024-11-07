@@ -183,6 +183,18 @@ Grupo* ListaGrupo::getGrupoPorNum(int num) {
 	return Grupo;
 }
 
+Grupo* ListaGrupo::getGrupoPos(int pos) {
+	actual = primero;
+	if (pos != 1) {
+		for (int i = 1; i < pos; i++) {
+			actual = actual->getSiguiente();
+		}
+		return actual->getElemento();
+	}
+	else
+		return actual->getElemento();
+}
+
 string ListaGrupo::toString() {
 	stringstream s;
 	actual = primero;

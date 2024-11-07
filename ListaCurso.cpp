@@ -110,6 +110,18 @@ Curso* ListaCurso::getCursoPorId(string id) {
 	return actual != NULL ? actual->getElemento() : NULL;
 }
 
+Curso* ListaCurso::getCursoPos(int pos) {
+	actual = primero;
+	if (pos != 1) {
+		for (int i = 1; i < pos; i++) {
+			actual = actual->getSiguiente();
+		}
+		return actual->getElemento();
+	}
+	else
+		return actual->getElemento();
+}
+
 string ListaCurso::toString() {
 	stringstream s;
 	actual = primero;

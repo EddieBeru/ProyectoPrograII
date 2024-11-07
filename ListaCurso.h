@@ -17,6 +17,7 @@ public:
 	bool eliminarCurso(Curso*);
 	bool modificarCurso(Curso*, Curso*);
 	bool existe(Curso*);
+	Curso* getCursoPos(int);
 	Curso* getCursoPorId(string);
 
 	string toString();

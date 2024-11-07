@@ -18,6 +18,7 @@ public:
 	bool eliminarEstudiante(Estudiante*);
 	bool modificarEstudiante(Estudiante*, Estudiante*);
 	Estudiante* getEstudiantePorId(string);
+	Estudiante* getEstudiantePos(int);
 	bool existe(Estudiante*);
 
 	string toString() ;

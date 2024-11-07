@@ -120,6 +120,17 @@ Estudiante* ListaEstudiante::getEstudiantePorId(string id) {
 	return actual == NULL ? NULL : actual->getElemento();
 }
 
+Estudiante* ListaEstudiante::getEstudiantePos(int pos) {
+	actual = primero;
+	if (pos != 1) {
+		for (int i = 1; i < pos; i++) {
+			actual = actual->getSiguiente();
+		}
+		return actual->getElemento();
+	}
+	else
+		return actual->getElemento();
+}
 string ListaEstudiante::toString() {
 	stringstream s;
 	actual = primero;
