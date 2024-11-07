@@ -113,6 +113,13 @@ bool ListaEstudiante::existe(Estudiante* Estudiante) {
 	return posible;
 }
 
+Estudiante* ListaEstudiante::getEstudiantePorId(string id) {
+	actual = primero;
+	while (actual != NULL && actual->getElemento()->getId() != id)
+		actual = actual->getSiguiente();
+	return actual == NULL ? NULL : actual->getElemento();
+}
+
 string ListaEstudiante::toString() {
 	stringstream s;
 	actual = primero;

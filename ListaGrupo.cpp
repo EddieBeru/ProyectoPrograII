@@ -162,6 +162,14 @@ bool ListaGrupo::existe(Grupo* Grupo) {
 	}
 	return posible;
 }
+/*
+ListaGrupo* ListaGrupo::getGruposPorEstudiante(string id) {
+	ListaGrupo* grupos = new ListaGrupo();
+	actual = primero;
+	while (actual != NULL && actual->getSiguiente() != NULL) {
+		if (actual->getElemento()->)
+	}
+}*/
 
 Grupo* ListaGrupo::getGrupoPorNum(int num) {
 	Grupo* Grupo = NULL;
