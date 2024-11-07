@@ -6,7 +6,7 @@ Matricula::~Matricula(){}
 
 Estudiante* Matricula::getEstudiante() { return estudiante; }
 //Periodo* Matricula::getPeriodo() { return periodo; }
-//Grupo* Matricula::getgrupo() { return grupo; }
+Grupo* Matricula::getgrupo() { return grupo; }
 string Matricula::toString() {
 	stringstream s;
 	//s << "Periodo: " << periodo << endl;
