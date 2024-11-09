@@ -13,7 +13,7 @@ int main() {
 	ListaEstudiante* ListEst = new ListaEstudiante;
 	ListaPeriodo* ListPer = new ListaPeriodo;
 	ListaCurso* ListCur = new ListaCurso;
-	ListaGrupo* ListGru = new ListaGrupo;
+ListaGrupo* ListGru = new ListaGrupo;
 	ListaMatricula* ListMat = new ListaMatricula;
 	int opcion = -1;
 	do {
@@ -34,7 +34,7 @@ int main() {
 		case 1:
 		{
 			//Submenu Administracion
-			while (opcion2 != 0 || opcion > 6) {
+			while (opcion2 < 0 || opcion > 6) {
 				system("cls");
 				cout << "Otra bienvenida mas que hacer \n"
 					<< "(1) Ingresar Profesor \n"
@@ -237,12 +237,14 @@ int main() {
 				int pos;
 				//Matricular Estudiante
 				cout << "Eliga el grupo: " << endl;
+				cout << ListGru->toString() << endl;
 				cin >> pos;
 				Grupo* gru=ListGru->getGrupoPos(pos);
 				cout << "Eliga el estudiante: " << endl;
 				cout<<ListEst->toString() << endl;
 				cin >> pos;
-				Estudiante* est=ListEst->getEstudiantePos(pos);
+				Estudiante* est = ListEst->getEstudiantePos(pos);
+				est->matricularGrupo(gru);
 				Matricula* mat = new Matricula(gru, est);
 				ListMat->ingresarMatricula(mat);
 			}
@@ -291,6 +293,7 @@ int main() {
 				//Informe Cursos Matriculados por un Estudiante
 				cout << "Informe Cursos Matriculados por un Estudiante \n\n"
 					<< "Ingrese el id del estudiante: ";
+				cout << ListEst->toString() << endl;
 				string id;
 				cin.ignore();
 				getline(cin, id);

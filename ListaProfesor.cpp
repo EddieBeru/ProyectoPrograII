@@ -34,7 +34,7 @@ Profesor* ListaProfesor::getProfesorEspecifico(int pos) {
 
 Profesor* ListaProfesor::getProfesorPorId(string id) {
 	actual = primero;
-	while (actual != NULL && actual->getElemento()->getId() != id)
+	while (actual->getSiguiente() != NULL && actual->getElemento()->getId() != id)
 		actual = actual->getSiguiente();
 	return actual != NULL ? actual->getElemento() : NULL;
 
