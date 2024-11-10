@@ -10,7 +10,7 @@ ListaCurso::~ListaCurso() {
 	}
 }
 void ListaCurso::ingresarLista(string archivo) {
-	ofstream txt(archivo);
+	ofstream txt(archivo,ios::app);
 	actual = this->primero;
 	while (actual != NULL) {
 		txt << actual->getElemento()->getNombre() << " "
@@ -125,9 +125,12 @@ Curso* ListaCurso::getCursoPos(int pos) {
 string ListaCurso::toString() {
 	stringstream s;
 	actual = primero;
+	int pos = 0;
 	while (actual != NULL) {
-		s << actual->getElemento()->toString() << endl;
+		s <<pos <<"- " << actual->getElemento()->toString() << endl;
 		actual = actual->getSiguiente();
+		s << endl;
+		pos++;
 	}
 	return s.str();
 }

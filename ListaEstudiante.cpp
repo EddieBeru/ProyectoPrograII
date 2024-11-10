@@ -9,7 +9,7 @@ ListaEstudiante::~ListaEstudiante() {
 	}
 }
 void ListaEstudiante::ingresarLista(string archivo) {
-	ofstream txt(archivo);
+	ofstream txt(archivo, ios::app);
 	actual = this->primero;
 	while (actual != NULL) {
 		txt << actual->getElemento()->getNombre() << " "
@@ -134,10 +134,11 @@ Estudiante* ListaEstudiante::getEstudiantePos(int pos) {
 string ListaEstudiante::toString() {
 	stringstream s;
 	actual = primero;
-	int pos = 1;
+	int pos = 0;
 	while (actual != NULL) {
 		s << pos << "- " << actual->getElemento()->toString() << endl;
 		actual = actual->getSiguiente();
+		pos++;
 	}
 	return s.str();
 }

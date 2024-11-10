@@ -10,7 +10,7 @@ ListaPeriodo::~ListaPeriodo() {
 	}
 }
 void ListaPeriodo::ingresarLista(string archivo) {
-	ofstream txt(archivo);
+	ofstream txt(archivo, ios::app);
 	actual = this->primero;
 	while (actual != NULL) {
 		txt << actual->getElemento()->getPeriodo() << endl;
