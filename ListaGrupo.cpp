@@ -211,7 +211,7 @@ Grupo* ListaGrupo::getGrupoPorNum(int num) {
 Grupo* ListaGrupo::getGrupoPos(int pos) {
 	if (primero != NULL) {
 		actual = primero;
-		if (pos != 1) {
+		if (pos >= 1) {
 			for (int i = 1; i < pos; i++) {
 				actual = actual->getSiguiente();
 			}
