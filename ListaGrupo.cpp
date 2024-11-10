@@ -175,6 +175,18 @@ ListaGrupo* ListaGrupo::getGruposPorCurso(Curso* cur) {
 	}
 	return grupos;
 }
+Grupo* ListaGrupo::getGrupoPorPorfe(string id) {
+	if (primero != NULL) {
+		actual = primero;
+		while (actual != NULL && actual->getElemento()->getProfesor()->getId() != id)
+			actual = actual->getSiguiente();
+		if (actual == NULL)
+			return NULL;
+		else
+			return actual->getElemento();
+	}
+
+}
 /*
 ListaGrupo* ListaGrupo::getGruposPorEstudiante(string id) {
 	ListaGrupo* grupos = new ListaGrupo();
@@ -211,8 +223,9 @@ Grupo* ListaGrupo::getGrupoPos(int pos) {
 string ListaGrupo::toString() {
 	stringstream s;
 	actual = primero;
+	int pos = 0;
 	while (actual != NULL) {
-		s << actual->getElemento()->toString();
+		s << pos << "- " << actual->getElemento()->toString();
 		actual = actual->getSiguiente();
 	s << endl;
 	}
