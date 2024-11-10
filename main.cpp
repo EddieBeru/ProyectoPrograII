@@ -321,6 +321,16 @@ int main() {
 			break;
 			case 4:
 				//Informe Profesor Especifico
+				cout << "Eliga al profesor el cual desea ver: \n Ingrese la cedula\n";
+				string id;
+				cout << ListProf->toString() << endl;
+				getline(cin, id);
+				ListProf->getProfesorPorId(id);
+				Grupo* grup = ListGru->getGrupoPorPorfe(id);
+				cout << "Cursos Impartidos por el profesor: \n";
+				cout << grup->getCurso()->toString() << endl;
+				cout << "Grupos Impartidos por el profesor: \n";
+				cout << grup->toString();
 				break;
 			case 5:
 			{
