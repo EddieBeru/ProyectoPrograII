@@ -392,14 +392,7 @@ int main() {
 			system("pause");
 			break;
 		}
-		case 4: {
-			ListCur->ingresarLista("ListaCursos.txt");
-			ListEst->ingresarLista("ListaEst.txt");
-			ListGru->ingresarLista("ListaGrupo.txt");
-			ListPer->ingresarLista("ListaPer.txt");
-			ListProf->ingresarLista("ListaProf.txt");
-		}
-			  break;
+		
 		}
 	} while (opcion != 5);
 
