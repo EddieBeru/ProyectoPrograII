@@ -1,3 +1,10 @@
-luis 123 12 tampoco menos
-mig 456 45 tampoco menos
-pedro 789 32 tampoco menos
+<<<<<<<<< Temporary merge branch 1
+luis 123 4949496 awfwafwa awfwafaw
+angel 456 498489498 afawf awfwaf
+maria 789 49644 awgawgwa agagwag
+=========
+luis nose 12 tampoco menos
+mig nose 45 tampoco menos
+pedro nose 32 tampoco menos
+  32  
+>>>>>>>>> Temporary merge branch 2
