@@ -19,6 +19,7 @@ public:
 	bool existe(Grupo*);
 	Grupo* getGrupoPorNum(int);
 	Grupo* getGrupoPos(int);
+	ListaGrupo* getGruposPorCurso(Curso*);
 	//ListaGrupo* getGruposPorEstudiante(string);
 
 	string toString() ;
