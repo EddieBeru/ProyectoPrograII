@@ -42,12 +42,12 @@ void Estudiante::setEmail(string mail){
 void Estudiante::matricularGrupo(Grupo* grup) {
 	if (grup->getCantidadAlumnos() <= grup->getCapacidadAlumnos()) {
 		cursosMatriculados->ingresarGrupo(grup);
-		grup->setCantidadAlumnos(+1);
+		grup->setCantidadAlumnos(grup->getCantidadAlumnos() + 1);
 	}
 }
 void Estudiante::anularGrupo(Grupo* grup) {
 	cursosMatriculados->eliminarGrupo(grup);
-	grup->setCantidadAlumnos(-1);
+	grup->setCantidadAlumnos(grup->getCantidadAlumnos() - 1);
 }
 
 string Estudiante::toString() const { 

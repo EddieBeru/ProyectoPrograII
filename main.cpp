@@ -238,7 +238,7 @@ int main() {
 				//Matricular Estudiante
 				int opcion = 1;
 				Estudiante* est = new Estudiante;
-				while (opcion!=0) {
+				while (opcion != 0) {
 					cout << "Eliga el grupo: " << endl;
 					cout << ListGru->toString() << endl;
 					cin >> pos;
@@ -252,7 +252,7 @@ int main() {
 					ListMat->ingresarMatricula(mat);
 					cout << "Dijite 1 si quiere realizar otra matricula o 0 si no\n";
 				}
-				cout<<ListMat->factura(est)<<endl<<endl;
+				cout << ListMat->factura(est) << endl << endl;
 			}
 			break;
 			case 2:
@@ -319,7 +319,7 @@ int main() {
 				cout << est->getGruposMatriculados()->toString() << endl;
 			}
 			break;
-			case 4:
+			case 4: {
 				//Informe Profesor Especifico
 				cout << "Eliga al profesor el cual desea ver: \n Ingrese la cedula\n";
 				string id;
@@ -331,11 +331,13 @@ int main() {
 				cout << grup->getCurso()->toString() << endl;
 				cout << "Grupos Impartidos por el profesor: \n";
 				cout << grup->toString();
-				break;
+			}
+				  break;
 			case 5:
 			{
 				//Informe Periodos Habilitados para el Annio
-				break;
+			}
+			break;
 			case 6:
 			{
 				//Informe Grupo Especifico
@@ -356,8 +358,8 @@ int main() {
 				Grupo* grup = grupos->getGrupoPorNum(gruInd);
 				cout << grup->toString() << endl;
 			}
-				break;
-				break;
+			break;
+			break;
 			}
 			system("pause");
 			break;
@@ -377,11 +379,11 @@ int main() {
 
 	//ACORDARSE DE CAMBIAR EL MODO DE ARCHIVOS A APP CREO
 
-	//ListaProfesor* L1 = new ListaProfesor;
-	//ListaEstudiante* E1 = new ListaEstudiante;
-	//ListaPeriodo* P1 = new ListaPeriodo;
-	//ListaCurso* C1 = new ListaCurso;
-	//ListaGrupo* G1 = new ListaGrupo;
+	/*ListaProfesor* L1 = new ListaProfesor;*/
+	/*ListaEstudiante* E1 = new ListaEstudiante;
+	ListaPeriodo* P1 = new ListaPeriodo;
+	ListaCurso* C1 = new ListaCurso;
+	ListaGrupo* G1 = new ListaGrupo;*/
 	//Profesor* p1 = new Profesor("luis", "nose", 12, "tampoco", "menos");
 	//Profesor* p2 = new Profesor("mig", "nose", 45, "tampoco", "menos");
 	//Profesor* p3 = new Profesor("pedro", "nose", 32, "tampoco", "menos");
