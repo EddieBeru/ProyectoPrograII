@@ -18,7 +18,7 @@ public:
 	bool modificarGrupo(Grupo*, Grupo*);
 	bool existe(Grupo*);
 	Grupo* getGrupoPorNum(int);
-	Grupo* getGrupoPorPorfe(string id);
+	//Grupo* getGrupoPorPorfe(string id);
 	Grupo* getGrupoPos(int);
 	ListaGrupo* getGruposPorCurso(Curso*);
 	Grupo* getGrupoPorPorfe(string id);

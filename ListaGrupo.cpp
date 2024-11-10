@@ -175,18 +175,18 @@ ListaGrupo* ListaGrupo::getGruposPorCurso(Curso* cur) {
 	}
 	return grupos;
 }
-Grupo* ListaGrupo::getGrupoPorPorfe(string id) {
-	if (primero != NULL) {
-		actual = primero;
-		while (actual != NULL && actual->getElemento()->getProfesor()->getId() != id)
-			actual = actual->getSiguiente();
-		if (actual == NULL)
-			return NULL;
-		else
-			return actual->getElemento();
-	}
-
-}
+//Grupo* ListaGrupo::getGrupoPorPorfe(string id) {
+//	if (primero != NULL) {
+//		actual = primero;
+//		while (actual != NULL && actual->getElemento()->getProfesor()->getId() != id)
+//			actual = actual->getSiguiente();
+//		if (actual == NULL)
+//			return NULL;
+//		else
+//			return actual->getElemento();
+//	}
+//
+//}
 /*
 ListaGrupo* ListaGrupo::getGruposPorEstudiante(string id) {
 	ListaGrupo* grupos = new ListaGrupo();
