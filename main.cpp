@@ -13,7 +13,7 @@ int main() {
 	ListaEstudiante* ListEst = new ListaEstudiante;
 	ListaPeriodo* ListPer = new ListaPeriodo;
 	ListaCurso* ListCur = new ListaCurso;
-ListaGrupo* ListGru = new ListaGrupo;
+	ListaGrupo* ListGru = new ListaGrupo;
 	ListaMatricula* ListMat = new ListaMatricula;
 	int opcion = -1;
 	do {
@@ -302,13 +302,44 @@ ListaGrupo* ListGru = new ListaGrupo;
 			}
 			break;
 			case 4:
+			{
 				//Informe Profesor Especifico
+				cout << "Informe Profesor Especifico \n \n"
+					<< "Ingrese el id del profesor: ";
+				string id;
+				cin.ignore();
+				getline(cin, id);
+				Profesor* pro = ListProf->getProfesorPorId(id);
+				cout << pro->toString() << endl;
+			}
 				break;
 			case 5:
+			{
 				//Informe Periodos Habilitados para el Annio
+				cout << "Informe Periodos Habilitados Para el Annio \n \n"
+					<< ListPer->toString() << endl;
+			}
 				break;
 			case 6:
+			{
 				//Informe Grupo Especifico
+				cout << "Informe Grupo Especifico \n \n"
+					<< "Elije un curso"
+					<< ListCur->toString()
+					<< "Ingrese el id del curso seleccionado: ";
+				string curId;
+				cin.ignore();
+				getline(cin, curId);
+				Curso* cur = ListCur->getCursoPorId(curId);
+				ListaGrupo* grupos = ListGru->getGruposPorCurso(cur);
+				cout << "Elije un grupo"
+					<< grupos->toString()
+					<< "Ingrese el numero del grupo seleccionado: ";
+				int gruInd;
+				cin >> gruInd;
+				Grupo* grup = grupos->getGrupoPorNum(gruInd);
+				cout << grup->toString() << endl;
+			}
 				break;
 				break;
 			}
