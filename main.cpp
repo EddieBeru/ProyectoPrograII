@@ -13,11 +13,11 @@ int main() {
 	ListaEstudiante* ListEst = new ListaEstudiante;
 	ListaPeriodo* ListPer = new ListaPeriodo;
 	ListaCurso* ListCur = new ListaCurso;
-ListaGrupo* ListGru = new ListaGrupo;
+	ListaGrupo* ListGru = new ListaGrupo;
 	ListaMatricula* ListMat = new ListaMatricula;
 	int opcion = -1;
 	do {
-	opcion = -1;
+		opcion = -1;
 		while (opcion < 0 || opcion > 5) {
 			system("cls");
 			cout << "Insertar bienvenida general aca \n"
@@ -236,22 +236,40 @@ ListaGrupo* ListGru = new ListaGrupo;
 				int periodo;
 				int pos;
 				//Matricular Estudiante
-				cout << "Eliga el grupo: " << endl;
-				cout << ListGru->toString() << endl;
-				cin >> pos;
-				Grupo* gru=ListGru->getGrupoPos(pos);
-				cout << "Eliga el estudiante: " << endl;
-				cout<<ListEst->toString() << endl;
-				cin >> pos;
-				Estudiante* est = ListEst->getEstudiantePos(pos);
-				est->matricularGrupo(gru);
-				Matricula* mat = new Matricula(gru, est);
-				ListMat->ingresarMatricula(mat);
+				int opcion = 1;
+				Estudiante* est = new Estudiante;
+				while (opcion!=0) {
+					cout << "Eliga el grupo: " << endl;
+					cout << ListGru->toString() << endl;
+					cin >> pos;
+					Grupo* gru = ListGru->getGrupoPos(pos);
+					cout << "Eliga el estudiante: " << endl;
+					cout << ListEst->toString() << endl;
+					cin >> pos;
+					Estudiante* est = ListEst->getEstudiantePos(pos);
+					Matricula* mat = new Matricula(gru, est);
+					est->matricularGrupo(gru);
+					ListMat->ingresarMatricula(mat);
+					cout << "Dijite 1 si quiere realizar otra matricula o 0 si no\n";
+				}
+				cout<<ListMat->factura(est)<<endl<<endl;
 			}
 			break;
 			case 2:
 			{
 				//Desmatricular Estudiante
+				cout << "Cursos Matriculados por un Estudiante \n\n"
+					<< "Ingrese el id del estudiante: ";
+				cout << ListEst->toString() << endl;
+				string id;
+				int num;
+				cin.ignore();
+				getline(cin, id);
+				Estudiante* est = ListEst->getEstudiantePorId(id);
+				cout << est->getGruposMatriculados()->toString() << endl;
+				cout << "Ingrese el numero del grupo del cual desea desmatricular: \n";
+				cin >> num;
+				est->anularGrupo(est->getGruposMatriculados()->getGrupoPorNum(num));
 			}
 			break;
 			}
@@ -301,11 +319,23 @@ ListaGrupo* ListGru = new ListaGrupo;
 				cout << est->getGruposMatriculados()->toString() << endl;
 			}
 			break;
-			case 4:
+			case 4: {
 				//Informe Profesor Especifico
-				break;
+				cout << "Eliga al profesor el cual desea ver: \n Ingrese la cedula\n";
+				string id;
+				cout<<ListProf->toString() << endl;
+				getline(cin, id);
+				ListProf->getProfesorPorId(id);
+				Grupo* grup=ListGru->getGrupoPorPorfe(id);
+				cout << "Cursos Impartidos por el profesor: \n";
+				cout<<grup->getCurso()->toString() << endl;
+				cout << "Grupos Impartidos por el profesor: \n";
+				cout << grup->toString();
+			}
+				  break;
 			case 5:
 				//Informe Periodos Habilitados para el Annio
+
 				break;
 			case 6:
 				//Informe Grupo Especifico
@@ -314,112 +344,119 @@ ListaGrupo* ListGru = new ListaGrupo;
 			}
 			system("pause");
 			break;
-
 		}
+		case 4: {
+			ListCur->ingresarLista("ListaCursos.txt");
+			ListEst->ingresarLista("ListaEst.txt");
+			ListGru->ingresarLista("ListaGrupo.txt");
+			ListPer->ingresarLista("ListaPer.txt");
+			ListProf->ingresarLista("ListaProf.txt");
+		}
+			  break;
 		}
 	} while (opcion != 5);
-	
+
 	//Crear Cosos
 
 	//ACORDARSE DE CAMBIAR EL MODO DE ARCHIVOS A APP CREO
 
-	ListaProfesor* L1=new ListaProfesor;
-	ListaEstudiante* E1 = new ListaEstudiante;
-	ListaPeriodo* P1 = new ListaPeriodo;
-	ListaCurso* C1 = new ListaCurso;
-	ListaGrupo* G1 = new ListaGrupo;
-	Profesor* p1 = new Profesor("luis", "nose", 12, "tampoco", "menos");
-	Profesor* p2 = new Profesor("mig", "nose", 45, "tampoco", "menos");
-	Profesor* p3 = new Profesor("pedro", "nose", 32, "tampoco", "menos");
-	L1->ingresarProfesor(p1);
-	L1->ingresarProfesor(p2);
-	L1->ingresarProfesor(p3);
-	cout << "LISTA ORIGINAL\n";
-	cout<<L1->toString() << endl<<endl<<endl;
-	L1->ingresarLista("ListaProf.txt"); //se mete normal
-	L1->sacarLista("ListaProf.txt");
-	cout << "AQUIIIIII\n\n";
-	cout << "LISTA REHECHA\n";
-	cout<<L1->toString() << endl << endl << endl;
+	//ListaProfesor* L1 = new ListaProfesor;
+	//ListaEstudiante* E1 = new ListaEstudiante;
+	//ListaPeriodo* P1 = new ListaPeriodo;
+	//ListaCurso* C1 = new ListaCurso;
+	//ListaGrupo* G1 = new ListaGrupo;
+	//Profesor* p1 = new Profesor("luis", "nose", 12, "tampoco", "menos");
+	//Profesor* p2 = new Profesor("mig", "nose", 45, "tampoco", "menos");
+	//Profesor* p3 = new Profesor("pedro", "nose", 32, "tampoco", "menos");
+	//L1->ingresarProfesor(p1);
+	//L1->ingresarProfesor(p2);
+	//L1->ingresarProfesor(p3);
+	//cout << "LISTA ORIGINAL\n";
+	//cout << L1->toString() << endl << endl << endl;
+	//L1->ingresarLista("ListaProf.txt"); //se mete normal
+	//L1->sacarLista("ListaProf.txt");
+	//cout << "AQUIIIIII\n\n";
+	//cout << "LISTA REHECHA\n";
+	//cout << L1->toString() << endl << endl << endl;
 
-	Estudiante* e1 = new Estudiante("jose", "nose", "nose", 12, "nose");
-	Estudiante* e2 = new Estudiante("maria", "nose2", "nose", 13, "correo");
-	Estudiante* e3 = new Estudiante("carlos", "nose3", "nose", 14, "correo");
-	Estudiante* e4 = new Estudiante("ana", "nose4", "nose", 15, "correo");
-	E1->ingresarEstudiante(e1);
-	E1->ingresarEstudiante(e2);
-	E1->ingresarEstudiante(e3);
-	E1->ingresarEstudiante(e4);
-	cout << "LISTA ORIGINAL\n";
-	cout << E1->toString() << endl << endl << endl;
-	cout << "AAAQUIIIIII\n\n";
-	E1->ingresarLista("ListaEst.txt");//Ya lo cambie :)
-	E1->sacarLista("ListaEst.txt");
-	cout << "LISTA REHECHA\n";
-	cout<<E1->toString()<<endl;
-
-
-
-	Periodo* pe1 = new Periodo(1);
-	Periodo* pe2 = new Periodo(2);
-	Periodo* pe3 = new Periodo(3);
-	Periodo* pe4 = new Periodo(4);
-	P1->ingresarPeriodo(pe1);
-	P1->ingresarPeriodo(pe2);
-	P1->ingresarPeriodo(pe3);
-	P1->ingresarPeriodo(pe4);
-	cout << "LISTA ORIGINAL\n";
-	cout << P1->toString() << endl << endl << endl;
-	P1->ingresarLista("ListaPer.txt");
-	P1->sacarLista("ListaPer.txt");
-	cout << "LISTA REHECHA\n";
-	cout << P1->toString()<<endl;
-
-
-	Curso* c1 = new Curso("Ingles", "nose", 2, 2.3, true);
-	Curso* c2 = new Curso("Matematicas", "nose2", 3, 3.5, true);
-	Curso* c3 = new Curso("Programacion", "nose3", 4, 4.0, true);
-	Curso* c4 = new Curso("Fisica", "nose4", 3, 3.0, false);
-	C1->ingresarCurso(c1);
-	C1->ingresarCurso(c2);
-	C1->ingresarCurso(c3);
-	C1->ingresarCurso(c4);
-	cout << "LISTA ORIGINAL\n";
-	cout << C1->toString() << endl << endl << endl;
-	C1->ingresarLista("ListaCursos.txt");
-	C1->sacarLista("ListaCursos.txt");
-	cout << "LISTA REHECHA\n";
-	cout<<C1->toString() << endl;
+	//Estudiante* e1 = new Estudiante("jose", "nose", "nose", 12, "nose");
+	//Estudiante* e2 = new Estudiante("maria", "nose2", "nose", 13, "correo");
+	//Estudiante* e3 = new Estudiante("carlos", "nose3", "nose", 14, "correo");
+	//Estudiante* e4 = new Estudiante("ana", "nose4", "nose", 15, "correo");
+	//E1->ingresarEstudiante(e1);
+	//E1->ingresarEstudiante(e2);
+	//E1->ingresarEstudiante(e3);
+	//E1->ingresarEstudiante(e4);
+	//cout << "LISTA ORIGINAL\n";
+	//cout << E1->toString() << endl << endl << endl;
+	//cout << "AAAQUIIIIII\n\n";
+	//E1->ingresarLista("ListaEst.txt");//Ya lo cambie :)
+	//E1->sacarLista("ListaEst.txt");
+	//cout << "LISTA REHECHA\n";
+	//cout << E1->toString() << endl;
 
 
 
-	Horario* h1=new Horario(12, 1, 6);
-	Horario* h2 = new Horario(14, 2, 8);
-	Horario* h3 = new Horario(16, 3, 10);
-	Horario* h4 = new Horario(18, 4, 12);
-	Grupo* g1 = new Grupo(12, 13, 14, h1, c1, pe1);
-	Grupo* g2 = new Grupo(15, 16, 17, h2, c2, pe2);
-	Grupo* g3 = new Grupo(18, 19, 20, h3, c3, pe3);
-	Grupo* g4 = new Grupo(21, 22, 23, h4, c4, pe4);
-	g2->setProfesor(L1->getProfesorEspecifico(2));//se le asigna un profesor al grupo con su posicion en la lista
-	//empezando en 1
+	//Periodo* pe1 = new Periodo(1);
+	//Periodo* pe2 = new Periodo(2);
+	//Periodo* pe3 = new Periodo(3);
+	//Periodo* pe4 = new Periodo(4);
+	//P1->ingresarPeriodo(pe1);
+	//P1->ingresarPeriodo(pe2);
+	//P1->ingresarPeriodo(pe3);
+	//P1->ingresarPeriodo(pe4);
+	//cout << "LISTA ORIGINAL\n";
+	//cout << P1->toString() << endl << endl << endl;
+	//P1->ingresarLista("ListaPer.txt");
+	//P1->sacarLista("ListaPer.txt");
+	//cout << "LISTA REHECHA\n";
+	//cout << P1->toString() << endl;
 
-	G1->ingresarGrupo(g1);
-	G1->ingresarGrupo(g2);  
-	G1->ingresarGrupo(g3);
-	G1->ingresarGrupo(g4);
-	cout << "LISTA ORIGINAL\n";
-	cout << G1->toString() << endl << endl << endl;
-	G1->ingresarLista("ListaGrupo.txt");
-	G1->sacarLista("ListaGrupo.txt");
-	cout << "LISTA REHECHA\n";
-	cout << G1->toString() << endl;
+
+	//Curso* c1 = new Curso("Ingles", "nose", 2, 2.3, true);
+	//Curso* c2 = new Curso("Matematicas", "nose2", 3, 3.5, true);
+	//Curso* c3 = new Curso("Programacion", "nose3", 4, 4.0, true);
+	//Curso* c4 = new Curso("Fisica", "nose4", 3, 3.0, false);
+	//C1->ingresarCurso(c1);
+	//C1->ingresarCurso(c2);
+	//C1->ingresarCurso(c3);
+	//C1->ingresarCurso(c4);
+	//cout << "LISTA ORIGINAL\n";
+	//cout << C1->toString() << endl << endl << endl;
+	//C1->ingresarLista("ListaCursos.txt");
+	//C1->sacarLista("ListaCursos.txt");
+	//cout << "LISTA REHECHA\n";
+	//cout << C1->toString() << endl;
+
+
+
+	//Horario* h1 = new Horario(12, 1, 6);
+	//Horario* h2 = new Horario(14, 2, 8);
+	//Horario* h3 = new Horario(16, 3, 10);
+	//Horario* h4 = new Horario(18, 4, 12);
+	//Grupo* g1 = new Grupo(12, 13, 14, h1, c1, pe1);
+	//Grupo* g2 = new Grupo(15, 16, 17, h2, c2, pe2);
+	//Grupo* g3 = new Grupo(18, 19, 20, h3, c3, pe3);
+	//Grupo* g4 = new Grupo(21, 22, 23, h4, c4, pe4);
+	//g2->setProfesor(L1->getProfesorEspecifico(2));//se le asigna un profesor al grupo con su posicion en la lista
+	////empezando en 1
+
+	//G1->ingresarGrupo(g1);
+	//G1->ingresarGrupo(g2);
+	//G1->ingresarGrupo(g3);
+	//G1->ingresarGrupo(g4);
+	//cout << "LISTA ORIGINAL\n";
+	//cout << G1->toString() << endl << endl << endl;
+	//G1->ingresarLista("ListaGrupo.txt");
+	//G1->sacarLista("ListaGrupo.txt");
+	//cout << "LISTA REHECHA\n";
+	//cout << G1->toString() << endl;
 
 
 
 	//Matricula 
-	cout << "MATRICULAAAA"<<endl;
-	ListaMatricula* M1=new ListaMatricula;
+	/*cout << "MATRICULAAAA" << endl;
+	ListaMatricula* M1 = new ListaMatricula;
 	Matricula* mat = new Matricula(g1, e1);
 	Matricula* mat1 = new Matricula(g1, e1);
 	Matricula* mat2 = new Matricula(g1, e1);
@@ -429,8 +466,8 @@ ListaGrupo* ListGru = new ListaGrupo;
 	M1->ingresarMatricula(mat1);
 	M1->ingresarMatricula(mat2);
 	M1->ingresarMatricula(mat3);
-	cout<<M1->getDescuento(e1)<<"%" << endl;
-	cout<<M1->factura(e1);
+	cout << M1->getDescuento(e1) << "%" << endl;
+	cout << M1->factura(e1);*/
 
 
 
@@ -483,6 +520,6 @@ ListaGrupo* ListGru = new ListaGrupo;
 	//delete c;
 	//delete h;
 	//system("pause");
-	
+
 	return 0;
 }
