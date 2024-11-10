@@ -136,6 +136,7 @@ string ListaProfesor::toString() {
 	while (actual != NULL) {
 		s <<pos<<"- " << actual->getElemento()->toString() << endl;
 		actual = actual->getSiguiente();
+		pos++;
 		s << endl;
 	}
 	return s.str();

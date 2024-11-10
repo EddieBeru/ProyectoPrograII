@@ -1,4 +1,3 @@
-luis nose 12 tampoco menos
-mig nose 45 tampoco menos
-pedro nose 32 tampoco menos
-  32  
+luis 123 12 tampoco menos
+mig 456 45 tampoco menos
+pedro 789 32 tampoco menos

@@ -428,13 +428,16 @@ void Interfaz::informeProfeEspecifico(ListaProfesor* ListProf, ListaGrupo* ListG
 	cout << "Eliga al profesor el cual desea ver: \n Ingrese la cedula\n";
 	string id;
 	cout << ListProf->toString() << endl;
+	cin.ignore();
 	getline(cin, id);
 	ListProf->getProfesorPorId(id);
 	Grupo* grup = ListGru->getGrupoPorPorfe(id);
-	cout << "Cursos Impartidos por el profesor: \n";
-	cout << grup->getCurso()->toString() << endl;
-	cout << "Grupos Impartidos por el profesor: \n";
-	cout << grup->toString();
+	if (grup != NULL) {
+		cout << "Cursos Impartidos por el profesor: \n";
+		cout << grup->getCurso()->toString() << endl;
+		cout << "Grupos Impartidos por el profesor: \n";
+		cout << grup->toString();
+	}
 }
 void Interfaz::informePeriodosHabilitados(ListaPeriodo* ListPer){
 	//Informe Periodos Habilitados para el Annio
