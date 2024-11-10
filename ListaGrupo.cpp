@@ -209,17 +209,31 @@ Grupo* ListaGrupo::getGrupoPorNum(int num) {
 }
 
 Grupo* ListaGrupo::getGrupoPos(int pos) {
-	actual = primero;
-	if (pos != 1) {
-		for (int i = 1; i < pos; i++) {
-			actual = actual->getSiguiente();
+	if (primero != NULL) {
+		actual = primero;
+		if (pos != 1) {
+			for (int i = 1; i < pos; i++) {
+				actual = actual->getSiguiente();
+			}
+			return actual->getElemento();
 		}
-		return actual->getElemento();
+		else
+			return actual->getElemento();
 	}
-	else
-		return actual->getElemento();
 }
 
+Grupo* ListaGrupo::getGrupoPorPorfe(string id) {
+	if (primero != NULL) {
+		actual = primero;
+		while (actual != NULL && actual->getElemento()->getProfesor()->getId() != id)
+			actual = actual->getSiguiente();
+		if (actual == NULL)
+			return NULL;
+		else
+			return actual->getElemento();
+	}
+
+}
 string ListaGrupo::toString() {
 	stringstream s;
 	actual = primero;

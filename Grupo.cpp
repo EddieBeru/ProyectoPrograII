@@ -17,6 +17,7 @@ Curso* Grupo::getCurso() { return curso; }
 Profesor* Grupo::getProfesor() { return profesor; }
 Periodo* Grupo::getPeriodo() { return periodo; }
 
+
 void Grupo::setNumeroGrupo(int num) { numeroGrupo = num; }
 void Grupo::setCapacidadAlumnos(int cap) { capacidadAlumnos = cap; }
 void Grupo::setCantidadAlumnos(int can) { cantidadAlumnos = can; }

@@ -28,7 +28,6 @@ public:
     Curso* getCurso();
     Profesor* getProfesor();
     Periodo* getPeriodo();
-
     void setNumeroGrupo(int);
     void setCapacidadAlumnos(int);
     void setCantidadAlumnos(int);

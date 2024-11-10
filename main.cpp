@@ -24,7 +24,7 @@ int main() {
 
 	int opcion = -1;
 	do {
-	opcion = -1;
+		opcion = -1;
 		while (opcion < 0 || opcion > 5) {
 			system("cls");
 			cout << "Bienvenido a la Academia Virtual Eureka AI School. \n"
@@ -243,8 +243,11 @@ int main() {
 			case 1:
 			{
 				//Matricular Estudiante
+				int opcion = 1;
 					int periodo;
 					int pos;
+        
+				while (opcion != 0) {
 				//Matricular Estudiante
 					cout << "Eliga el grupo. \n"
 						<< ListGru->toString()
@@ -259,12 +262,27 @@ int main() {
 					est->matricularGrupo(gru);
 					Matricula* mat = new Matricula(gru, est);
 					ListMat->ingresarMatricula(mat);
-					cout << "Realizado con exito.";
+				cout << ListMat->factura(est) << endl << endl;
+					cout << "Realizado con exito, digite 1 si desea hacer otra matricula; de otro modo, digite 0: ";
+          cin >> opcion;
+				}
 					break;
 			}
 			case 2:
 			{
 				//Desmatricular Estudiante
+				cout << "Cursos Matriculados por un Estudiante \n\n"
+					<< "Ingrese el id del estudiante: ";
+				cout << ListEst->toString() << endl;
+				string id;
+				int num;
+				cin.ignore();
+				getline(cin, id);
+				Estudiante* est = ListEst->getEstudiantePorId(id);
+				cout << est->getGruposMatriculados()->toString() << endl;
+				cout << "Ingrese el numero del grupo del cual desea desmatricular: \n";
+				cin >> num;
+				est->anularGrupo(est->getGruposMatriculados()->getGrupoPorNum(num));
 			}
 			break;
 			}
@@ -374,8 +392,16 @@ int main() {
 			system("pause");
 			break;
 		}
+		case 4: {
+			ListCur->ingresarLista("ListaCursos.txt");
+			ListEst->ingresarLista("ListaEst.txt");
+			ListGru->ingresarLista("ListaGrupo.txt");
+			ListPer->ingresarLista("ListaPer.txt");
+			ListProf->ingresarLista("ListaProf.txt");
+		}
+			  break;
 		}
 	} while (opcion != 5);
-	
+
 	return 0;
 }
