@@ -28,7 +28,7 @@ void Grupo::setPeriodo(Periodo* per) { periodo = per; }
 
 string Grupo::toString() const { 
 	stringstream s;
-	s << "    Curso: " << curso->getNombre() << endl;
+	s << "Curso: " << curso->getNombre() << endl;
 	s << "Numero de Grupo: " << numeroGrupo << endl;
 	s << "Capacidad de Alumnos: " << capacidadAlumnos << endl;
 	s << "Cantidad de Alumnos: " << cantidadAlumnos << endl;
