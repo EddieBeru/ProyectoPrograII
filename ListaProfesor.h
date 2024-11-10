@@ -13,8 +13,8 @@ public:
 	virtual ~ListaProfesor();
 
 	bool ingresarProfesor(Profesor*);
-	void ingresarLista(const string& archivo);
-	void sacarLista(const string& archivo);
+	void ingresarLista(string archivo);
+	void sacarLista(string archivo);
 	Profesor* getProfesorEspecifico(int);
 	Profesor* getProfesorPorId(string);
 	bool eliminarProfesor(Profesor*);

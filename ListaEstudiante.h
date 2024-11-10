@@ -12,12 +12,13 @@ public:
 	ListaEstudiante();
 	virtual ~ListaEstudiante();
 
-	void ingresarLista(const string&);
-	void sacarLista(const string&);
+	void ingresarLista(string);
+	void sacarLista(string);
 	bool ingresarEstudiante(Estudiante*);
 	bool eliminarEstudiante(Estudiante*);
 	bool modificarEstudiante(Estudiante*, Estudiante*);
 	Estudiante* getEstudiantePorId(string);
+	Estudiante* getEstudiantePos(int);
 	bool existe(Estudiante*);
 
 	string toString() ;

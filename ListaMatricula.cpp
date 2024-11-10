@@ -85,10 +85,10 @@ double ListaMatricula::getDescuento(Estudiante* est) {
 	while (actual != NULL) {
 		if (actual->getElemento()->getEstudiante() == est) {
 			contC++;
-			per = actual->getElemento()->getPeriodo();
+			per = actual->getElemento()->getgrupo()->getPeriodo();
 			actual = actual->getSiguiente();
 			if(actual!=NULL)
-				if (actual->getElemento()->getPeriodo()==per)
+				if (actual->getElemento()->getgrupo()->getPeriodo() == per)
 					contP+=2;
 		}
 	}
@@ -103,10 +103,10 @@ double ListaMatricula::getprecioCursos(Estudiante* est) {
 	actual = primero;
 	while (actual != NULL) {
 		if (actual->getElemento()->getEstudiante() == est)
-			precioT+=actual->getElemento()->getCurso()->getPrecio();
+			precioT+=actual->getElemento()->getgrupo()->getCurso()->getPrecio();
 		actual = actual->getSiguiente();
 	}
-	return precioT;
+	return precioT+(precioT*0.2);
 }
 
 string ListaMatricula::factura(Estudiante* est){
@@ -116,10 +116,10 @@ string ListaMatricula::factura(Estudiante* est){
 	int contC = 0;
 	while (actual != NULL) {
 		if (actual->getElemento()->getEstudiante() == est) {
-			s << "Curso: "<<actual->getElemento()->getCurso()->getNombre() << endl;
-			s << "Precio del Curso: "<<actual->getElemento()->getCurso()->getPrecio() << endl;
+			s << "Curso: "<<actual->getElemento()->getgrupo()->getCurso()->getNombre() << endl;
+			s << "Precio del Curso: "<<actual->getElemento()->getgrupo()->getCurso()->getPrecio() << endl;
 			s << "SubTotal: "<<getprecioCursos(est) << endl;
-			s << "IVA: ?????????" << endl;
+			s << "IVA: 2%" << endl;
 			s << "Descuento: " << getDescuento(est)*100<<"%"<< endl;
 			s << "Total: " << getprecioCursos(est) - (getprecioCursos(est) * getDescuento(est)) << endl;
 		}

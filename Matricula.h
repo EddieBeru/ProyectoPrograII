@@ -10,16 +10,16 @@ using namespace std;
 
 class Matricula {
 private:
-	Periodo* periodo;
-	Curso* curso;
+	//Periodo* periodo;
+	//Curso* curso;
 	Grupo* grupo;
 	Estudiante* estudiante;
 public:
-	Matricula(Periodo*, Curso*, Grupo*, Estudiante*);
+	Matricula(Grupo*, Estudiante*);
 	virtual ~Matricula();
 	Estudiante* getEstudiante();
-	Periodo* getPeriodo();
-	Curso* getCurso();
+	//Periodo* getPeriodo();
+	//Curso* getCurso();
 	Grupo* getgrupo();
 	string toString();
 	

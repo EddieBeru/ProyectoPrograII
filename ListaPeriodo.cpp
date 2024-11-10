@@ -1,4 +1,5 @@
 #include "ListaPeriodo.h"
+#include <fstream>
 
 ListaPeriodo::ListaPeriodo() { primero = NULL; actual = NULL; }
 ListaPeriodo::~ListaPeriodo() {
@@ -8,7 +9,31 @@ ListaPeriodo::~ListaPeriodo() {
 		delete actual;
 	}
 }
+void ListaPeriodo::ingresarLista(string archivo) {
+	ofstream txt(archivo);
+	actual = this->primero;
+	while (actual != NULL) {
+		txt << actual->getElemento()->getPeriodo() << endl;
+		actual = actual->getSiguiente();
+	}
+	txt.close();
+}
+void ListaPeriodo::sacarLista(string archivo) {
+	ifstream txt(archivo);
+	int periodo;
+	while (primero != NULL) {
+		actual = primero;
+		primero = primero->getSiguiente();
+		delete actual;
+	}
+	txt >> periodo;
+	while (!txt.eof()) {
+		Periodo* per = new Periodo(periodo);
+		ingresarPeriodo(per);
+		txt >> periodo;
+	}
 
+}
 bool ListaPeriodo::ingresarPeriodo(Periodo* Periodo) {
 	bool posible = !existe(Periodo);
 	if (posible) {

@@ -38,7 +38,10 @@ void Estudiante::setEmail(string mail){
 }
 
 void Estudiante::matricularGrupo(Grupo* grup) {
-	cursosMatriculados->ingresarGrupo(grup);
+	if (grup->getCantidadAlumnos() <= grup->getCapacidadAlumnos()) {
+		cursosMatriculados->ingresarGrupo(grup);
+		grup->setCantidadAlumnos(+1);
+	}
 }
 void Estudiante::anularGrupo(Grupo* grup) {
 	cursosMatriculados->eliminarGrupo(grup);
