@@ -16,6 +16,7 @@ public:
 	bool modificarGrupo(Grupo*, Grupo*);
 	bool existe(Grupo*);
 	Grupo* getGrupoPorNum(int);
+	ListaGrupo* getGruposPorCurso(Curso*);
 	//ListaGrupo* getGruposPorEstudiante(string);
 
 	string toString() ;

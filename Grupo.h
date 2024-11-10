@@ -25,9 +25,9 @@ public:
     int getCapacidadAlumnos();
     int getCantidadAlumnos();
     Horario* getHorario();
-    //Curso* getCurso();
-    //Profesor* getProfesor();
-    //Periodo* getPeriodo();
+    Curso* getCurso();
+    Profesor* getProfesor();
+    Periodo* getPeriodo();
 
     void setNumeroGrupo(int);
     void setCapacidadAlumnos(int);

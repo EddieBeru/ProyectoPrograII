@@ -65,6 +65,19 @@ bool ListaGrupo::existe(Grupo* Grupo) {
 	}
 	return posible;
 }
+ListaGrupo* ListaGrupo::getGruposPorCurso(Curso* cur) {
+	ListaGrupo* grupos = new ListaGrupo();
+	actual = primero;
+	if (actual != NULL) {
+		while (actual->getSiguiente() != NULL) {
+			if (actual->getElemento()->getCurso() == cur) {
+				grupos->ingresarGrupo(actual->getElemento());
+			}
+			actual = actual->getSiguiente();
+		}
+	}
+	return grupos;
+}
 /*
 ListaGrupo* ListaGrupo::getGruposPorEstudiante(string id) {
 	ListaGrupo* grupos = new ListaGrupo();
