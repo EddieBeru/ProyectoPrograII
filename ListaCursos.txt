@@ -1,4 +1,0 @@
-Ingles nose 2 2.3 1
-Matematicas nose2 3 3.5 1
-Programacion nose3 4 4 1
-Fisica nose4 3 3 0
