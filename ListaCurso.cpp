@@ -1,4 +1,5 @@
 #include "ListaCurso.h"
+#include <fstream>
 
 ListaCurso::ListaCurso() { primero = NULL; actual = NULL; }
 ListaCurso::~ListaCurso() {
@@ -8,7 +9,44 @@ ListaCurso::~ListaCurso() {
 		delete actual;
 	}
 }
+void ListaCurso::ingresarLista(string archivo) {
+	ofstream txt(archivo);
+	actual = this->primero;
+	while (actual != NULL) {
+		txt << actual->getElemento()->getNombre() << " "
+			<< actual->getElemento()->getId() << " "
+			<< actual->getElemento()->getHoras() << " "
+			<< actual->getElemento()->getPrecio() << " "
+			<< actual->getElemento()->getEstado() << endl;
+		actual = actual->getSiguiente();
+	}
+	txt.close();
+}
+void ListaCurso::sacarLista(string archivo) {
+	ifstream txt(archivo);
+	while (primero != NULL) {
+		actual = primero;
+		primero = primero->getSiguiente();
+		delete actual;
+	}
+	string nombre, id;
+	int horas;
+	float precio;
+	bool estado;
+	txt >> nombre;
+	while (!txt.eof()) {
 
+		txt >> id;
+		txt >> horas;
+		txt >> precio;
+		txt >> estado;
+
+
+		Curso* Cur = new Curso(nombre, id, horas, precio, estado);
+		ingresarCurso(Cur);
+		txt >> nombre;
+	}
+}
 bool ListaCurso::ingresarCurso(Curso* curso){
 	bool posible = !existe(curso);
 	if (posible) {
@@ -64,6 +102,24 @@ bool ListaCurso::existe(Curso* curso) {
 			posible = false;
 	}
 	return posible;
+}
+Curso* ListaCurso::getCursoPorId(string id) {
+	actual = primero;
+	while (actual != NULL && actual->getElemento()->getId() != id)
+		actual = actual->getSiguiente();
+	return actual != NULL ? actual->getElemento() : NULL;
+}
+
+Curso* ListaCurso::getCursoPos(int pos) {
+	actual = primero;
+	if (pos != 1) {
+		for (int i = 1; i < pos; i++) {
+			actual = actual->getSiguiente();
+		}
+		return actual->getElemento();
+	}
+	else
+		return actual->getElemento();
 }
 
 string ListaCurso::toString() {

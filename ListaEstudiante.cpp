@@ -8,6 +8,52 @@ ListaEstudiante::~ListaEstudiante() {
 		delete actual;
 	}
 }
+void ListaEstudiante::ingresarLista(string archivo) {
+	ofstream txt(archivo);
+	actual = this->primero;
+	while (actual != NULL) {
+		txt << actual->getElemento()->getNombre() << " "
+			<< actual->getElemento()->getId() << " "
+			<< actual->getElemento()->getEspecialidad() << " "
+			<< actual->getElemento()->getNumero() << " "
+			<< actual->getElemento()->getEmail()  << endl;
+		actual = actual->getSiguiente();
+	}
+	txt.close();
+}
+void ListaEstudiante::sacarLista(string archivo) {
+	ifstream txt(archivo);
+	while (primero != NULL) {
+		actual = primero;
+		primero = primero->getSiguiente();
+		delete actual;
+	}
+	actual = primero;
+	string nombre, id, email, especialidad;
+	int numero;
+	txt >> nombre;
+	while (!txt.eof()) {
+
+		txt >> id;
+		txt >> especialidad;
+		txt >> numero;
+		txt >> email;
+
+
+		Estudiante* Est = new Estudiante(nombre, id, especialidad, numero, email);
+		if (primero == NULL) {
+			primero = new NodoEstudiante(Est, NULL);
+		}
+		else {
+			actual = primero;
+			while (actual->getSiguiente() != NULL) {
+				actual = actual->getSiguiente();
+			}
+			actual->setSiguiente(new NodoEstudiante(Est, NULL));
+		}
+		txt >> nombre;
+	}
+}
 
 bool ListaEstudiante::ingresarEstudiante(Estudiante* Estudiante) {
 	bool posible = !existe(Estudiante);
@@ -67,11 +113,30 @@ bool ListaEstudiante::existe(Estudiante* Estudiante) {
 	return posible;
 }
 
+Estudiante* ListaEstudiante::getEstudiantePorId(string id) {
+	actual = primero;
+	while (actual != NULL && actual->getElemento()->getId() != id)
+		actual = actual->getSiguiente();
+	return actual == NULL ? NULL : actual->getElemento();
+}
+
+Estudiante* ListaEstudiante::getEstudiantePos(int pos) {
+	actual = primero;
+	if (pos != 1) {
+		for (int i = 1; i < pos; i++) {
+			actual = actual->getSiguiente();
+		}
+		return actual->getElemento();
+	}
+	else
+		return actual->getElemento();
+}
 string ListaEstudiante::toString() {
 	stringstream s;
 	actual = primero;
+	int pos = 1;
 	while (actual != NULL) {
-		s << actual->getElemento()->toString() << endl;
+		s << pos << "- " << actual->getElemento()->toString() << endl;
 		actual = actual->getSiguiente();
 	}
 	return s.str();

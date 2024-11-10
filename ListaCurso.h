@@ -11,10 +11,14 @@ public:
 	ListaCurso();
 	virtual ~ListaCurso();
 
+	void ingresarLista(string);
+	void sacarLista(string);
 	bool ingresarCurso(Curso*);
 	bool eliminarCurso(Curso*);
 	bool modificarCurso(Curso*, Curso*);
 	bool existe(Curso*);
+	Curso* getCursoPos(int);
+	Curso* getCursoPorId(string);
 
 	string toString();
 };

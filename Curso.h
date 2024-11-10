@@ -10,6 +10,7 @@ private:
     int horas;
     float precio;
     bool estado;
+    
 public:
     Curso();
     Curso(string, string, int, float, bool);
