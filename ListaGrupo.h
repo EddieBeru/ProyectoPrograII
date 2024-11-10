@@ -20,6 +20,7 @@ public:
 	Grupo* getGrupoPorNum(int);
 	Grupo* getGrupoPorPorfe(string id);
 	Grupo* getGrupoPos(int);
+	ListaGrupo* getGruposPorCurso(Curso*);
 	//ListaGrupo* getGruposPorEstudiante(string);
 
 	string toString() ;
