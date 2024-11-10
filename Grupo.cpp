@@ -14,8 +14,9 @@ int Grupo::getCapacidadAlumnos() { return capacidadAlumnos; }
 int Grupo::getCantidadAlumnos() { return cantidadAlumnos; }
 Horario* Grupo::getHorario() { return horario; }
 Curso* Grupo::getCurso() { return curso; }
-Periodo* Grupo::getPeriodo() { return periodo; }
 Profesor* Grupo::getProfesor() { return profesor; }
+Periodo* Grupo::getPeriodo() { return periodo; }
+
 
 void Grupo::setNumeroGrupo(int num) { numeroGrupo = num; }
 void Grupo::setCapacidadAlumnos(int cap) { capacidadAlumnos = cap; }
@@ -27,7 +28,7 @@ void Grupo::setPeriodo(Periodo* per) { periodo = per; }
 
 string Grupo::toString() const { 
 	stringstream s;
-	s << "    Curso: " << curso->getNombre() << endl;
+	s << "Curso: " << curso->getNombre() << endl;
 	s << "Numero de Grupo: " << numeroGrupo << endl;
 	s << "Capacidad de Alumnos: " << capacidadAlumnos << endl;
 	s << "Cantidad de Alumnos: " << cantidadAlumnos << endl;

@@ -134,8 +134,9 @@ Estudiante* ListaEstudiante::getEstudiantePos(int pos) {
 string ListaEstudiante::toString() {
 	stringstream s;
 	actual = primero;
+	int pos = 1;
 	while (actual != NULL) {
-		s << actual->getElemento()->toString() << endl;
+		s << pos << "- " << actual->getElemento()->toString() << endl;
 		actual = actual->getSiguiente();
 	}
 	return s.str();

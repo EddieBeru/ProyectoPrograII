@@ -18,10 +18,10 @@ public:
 	bool modificarGrupo(Grupo*, Grupo*);
 	bool existe(Grupo*);
 	Grupo* getGrupoPorNum(int);
-	Grupo* getGrupoPos(int);
-	ListaGrupo* getGruposPorCurso(string);
 	Grupo* getGrupoPorPorfe(string id);
-	bool vacio();
+	Grupo* getGrupoPos(int);
+	ListaGrupo* getGruposPorCurso(Curso*);
+	Grupo* getGrupoPorPorfe(string id);
 	//ListaGrupo* getGruposPorEstudiante(string);
 
 	string toString() ;

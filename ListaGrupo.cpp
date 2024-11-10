@@ -10,7 +10,7 @@ ListaGrupo::~ListaGrupo() {
 	}
 }
 void ListaGrupo::ingresarLista(string archivo) {
-	ofstream txt(archivo, ios::app);
+	ofstream txt(archivo);
 	actual = this->primero;
 	while (actual != NULL) {
 		txt << actual->getElemento()->getNumeroGrupo() << " "
@@ -162,12 +162,12 @@ bool ListaGrupo::existe(Grupo* Grupo) {
 	}
 	return posible;
 }
-ListaGrupo* ListaGrupo::getGruposPorCurso(string curId) {
+ListaGrupo* ListaGrupo::getGruposPorCurso(Curso* cur) {
 	ListaGrupo* grupos = new ListaGrupo();
 	actual = primero;
 	if (actual != NULL) {
 		while (actual->getSiguiente() != NULL) {
-			if (actual->getElemento()->getCurso()->getId() == curId) {
+			if (actual->getElemento()->getCurso() == cur) {
 				grupos->ingresarGrupo(actual->getElemento());
 			}
 			actual = actual->getSiguiente();
@@ -209,21 +209,31 @@ Grupo* ListaGrupo::getGrupoPorNum(int num) {
 }
 
 Grupo* ListaGrupo::getGrupoPos(int pos) {
-	actual = primero;
-	if (pos != 1) {
-		for (int i = 1; i < pos; i++) {
-			actual = actual->getSiguiente();
+	if (primero != NULL) {
+		actual = primero;
+		if (pos != 1) {
+			for (int i = 1; i < pos; i++) {
+				actual = actual->getSiguiente();
+			}
+			return actual->getElemento();
 		}
-		return actual->getElemento();
+		else
+			return actual->getElemento();
 	}
-	else
-		return actual->getElemento();
 }
 
-bool ListaGrupo::vacio() {
-	return primero == NULL;
-}
+Grupo* ListaGrupo::getGrupoPorPorfe(string id) {
+	if (primero != NULL) {
+		actual = primero;
+		while (actual != NULL && actual->getElemento()->getProfesor()->getId() != id)
+			actual = actual->getSiguiente();
+		if (actual == NULL)
+			return NULL;
+		else
+			return actual->getElemento();
+	}
 
+}
 string ListaGrupo::toString() {
 	stringstream s;
 	actual = primero;
@@ -231,7 +241,6 @@ string ListaGrupo::toString() {
 	while (actual != NULL) {
 		s << pos << "- " << actual->getElemento()->toString();
 		actual = actual->getSiguiente();
-		pos++;
 	s << endl;
 	}
 	return s.str();
