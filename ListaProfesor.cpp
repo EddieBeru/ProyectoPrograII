@@ -41,6 +41,7 @@ Profesor* ListaProfesor::getProfesorPorId(string id) {
 }
 void ListaProfesor::sacarLista(string archivo) {
 	ifstream txt(archivo);
+	if (!txt) return;
 	while (primero != NULL) {
 		actual = primero;
 		primero = primero->getSiguiente();

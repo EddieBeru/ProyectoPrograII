@@ -20,6 +20,7 @@ void ListaPeriodo::ingresarLista(string archivo) {
 }
 void ListaPeriodo::sacarLista(string archivo) {
 	ifstream txt(archivo);
+	if (!txt) return;
 	int periodo;
 	while (primero != NULL) {
 		actual = primero;

@@ -24,6 +24,8 @@ void ListaCurso::ingresarLista(string archivo) {
 }
 void ListaCurso::sacarLista(string archivo) {
 	ifstream txt(archivo);
+	if (!txt) return;
+
 	while (primero != NULL) {
 		actual = primero;
 		primero = primero->getSiguiente();

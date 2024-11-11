@@ -40,6 +40,7 @@ void ListaGrupo::ingresarLista(string archivo) {
 }
 void ListaGrupo::sacarLista(string archivo) {
 	ifstream txt(archivo);
+	if (!txt) return;
 	while (primero != NULL) {
 		actual = primero;
 		primero = primero->getSiguiente();
